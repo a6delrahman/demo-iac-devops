@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevOps, Git & IaC - vision&</title>
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Segoe+UI:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS for Layout Utilities -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
+
     <!-- Devicon (for Tool Logos) -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
@@ -25,40 +28,52 @@
             --bg-base: #060b1a;
             --bg-radial-center: #0a1128;
             --bg-radial-edge: #03060f;
-            
-            --color-cyan: #0ea5e9;    /* Frontend / Space */
-            --color-emerald: #10b981; /* Database / Stakeholder */
-            --color-purple: #8b5cf6;  /* Infrastructure / API */
-            --color-pink: #f43f5e;    /* Pipelines / Logic */
-            --color-gold: #f59e0b;    /* Highlights */
-            --color-vision: #08ccab;  /* Brand Accent */
-            
-            --text-main: #ffffff;
-            --text-normal: #cbd5e1;
-            --text-subtle: rgba(200, 215, 235, 0.7);
-            
+
+            --color-cyan: #0ea5e9;
+            /* Frontend / Space */
+            --color-emerald: #10b981;
+            /* Database / Stakeholder */
+            --color-purple: #8b5cf6;
+            /* Infrastructure / API */
+            --color-pink: #f43f5e;
+            /* Pipelines / Logic */
+            --color-gold: #f59e0b;
+            /* Highlights */
+            --color-vision: #08ccab;
+            /* Brand Accent */
+
             /* Git Graph Colors based on Image */
-            --git-main: #ec4899;   /* Pink */
-            --git-dev: #4ade80;    /* Green */
-            --git-feat: #60a5fa;   /* Blue */
-            --git-bug: #fde047;    /* Yellow */
+            --git-main: #ec4899;
+            /* Pink */
+            --git-dev: #4ade80;
+            /* Green */
+            --git-feat: #60a5fa;
+            /* Blue */
+            --git-bug: #fde047;
+            /* Yellow */
         }
 
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            color: var(--text-normal);
+            color: #e2e8f0;
+            /* Using a light slate color for default text */
             background: var(--bg-base);
             /* Deep Space Radial Gradient */
             background-image: radial-gradient(circle at 50% 50%, var(--bg-radial-center) 0%, var(--bg-radial-edge) 100%);
             min-height: 100vh;
-            overflow: hidden; /* Prevent scrolling, act like an app */
+            overflow: hidden;
+            /* Prevent scrolling, act like an app */
             display: flex;
         }
 
-        h1, h2, h3, h4 {
-            color: var(--text-main);
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #f8fafc;
+            /* A very light color for headings */
             font-weight: 700;
         }
 
@@ -71,18 +86,19 @@
             background: rgba(10, 15, 30, 0.65);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(99, 156, 255, 0.15);
+            border: 1px solid var(--color-vision);
             border-radius: 16px;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(99, 156, 255, 0.05);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(99, 156, 255, 0.05);
         }
-        
+
         .glass-interactive {
             transition: all 0.3s ease;
             cursor: pointer;
         }
+
         .glass-interactive:hover {
             border-color: rgba(99, 156, 255, 0.4);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8), inset 0 0 30px rgba(99, 156, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(99, 156, 255, 0.1);
             transform: translateY(-2px);
         }
 
@@ -93,7 +109,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         /* Progress Bar Gradients */
         .progress-gradient {
             background: linear-gradient(90deg, #3b82f6, #a855f7);
@@ -127,17 +143,19 @@
             justify-content: flex-start;
             gap: 10px;
             padding: 0 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             transition: all 0.3s ease;
             color: #e2e8f0;
             white-space: nowrap;
         }
+
         .tool-badge:hover {
             transform: scale(1.1);
             z-index: 50;
             border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
         }
+
         .tool-badge i {
             font-size: 16px;
             display: flex;
@@ -202,14 +220,14 @@
             box-shadow: 0 0 10px var(--color-vision);
             transform: scale(1.3);
         }
-        
+
         .nav-dot::after {
             content: attr(data-tooltip);
             position: absolute;
             left: 24px;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.8);
+            background: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 4px 8px;
             border-radius: 4px;
@@ -218,7 +236,7 @@
             pointer-events: none;
             white-space: nowrap;
             transition: opacity 0.2s;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-dot:hover::after {
@@ -230,22 +248,25 @@
             opacity: 0.4;
             transition: all 0.5s;
         }
+
         .pipe-step.active {
             opacity: 1;
             transform: scale(1.05);
         }
+
         .pipe-step.done {
             opacity: 1;
             border-color: var(--color-emerald);
             box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.2);
         }
-        
+
         /* Terraform Build Animation */
         .infra-block {
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
         .infra-block.visible {
             opacity: 1;
             transform: translateY(0);
@@ -253,22 +274,41 @@
 
         /* Floating Animation */
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
-        .floating { animation: float 6s ease-in-out infinite; }
-        
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
         @keyframes flowDash {
-            from { stroke-dashoffset: 1500; }
-            to { stroke-dashoffset: 0; }
+            from {
+                stroke-dashoffset: 1500;
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
         }
+
         .animate-flow {
             animation: flowDash 30s linear infinite;
         }
 
         /* Glow Effect */
-        .glow-text { text-shadow: 0 0 30px rgba(255,255,255,0.4); }
+        .glow-text {
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+        }
 
         /* General Button */
         .btn-primary {
@@ -283,15 +323,17 @@
             align-items: center;
             gap: 0.5rem;
         }
+
         .btn-primary:hover {
             background: linear-gradient(130deg, rgba(74, 143, 255, 0.4), rgba(168, 85, 247, 0.4));
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
             transform: translateY(-2px);
         }
+
         .btn-primary:active {
             transform: translateY(0);
         }
-        
+
         /* Interactive Git Graph Specific Styles */
         .git-node {
             position: absolute;
@@ -301,11 +343,13 @@
             transform: translate(-50%, -50%) scale(0);
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             z-index: 20;
-            box-shadow: inset 0 0 10px rgba(255,255,255,0.5), 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 0, 0, 0.5);
         }
+
         .git-node.visible {
             transform: translate(-50%, -50%) scale(1);
         }
+
         .git-path {
             fill: none;
             stroke-width: 6;
@@ -316,9 +360,11 @@
             transition: stroke-dashoffset 0.8s ease-in-out;
             z-index: 10;
         }
+
         .git-path.visible {
             stroke-dashoffset: 0;
         }
+
         .git-track {
             fill: none;
             stroke: rgba(255, 255, 255, 0.1);
@@ -328,9 +374,11 @@
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
         }
+
         .git-track.visible {
             opacity: 1;
         }
+
         .git-label {
             position: absolute;
             transform: translateY(-50%);
@@ -341,20 +389,25 @@
             opacity: 0;
             transition: opacity 0.5s;
             z-index: 25;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
         }
+
         .git-label.visible {
             opacity: 1;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation Sidebar -->
     <nav id="nav-sidebar">
         <div class="mb-4 mt-4 flex justify-center w-full">
-            <img src="ampersand (3).png" alt="&" class="h-10 w-auto object-contain floating" style="filter: drop-shadow(0 0 12px rgba(8, 204, 171, 0.4));" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <span class="floating font-bold" style="display:none; color: var(--color-vision); font-size: 3rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(8, 204, 171, 0.4));">&amp;</span>
+            <img src="ampersand (3).png" alt="&" class="h-10 w-auto object-contain floating"
+                style="filter: drop-shadow(0 0 12px rgba(8, 204, 171, 0.4));"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="floating font-bold"
+                style="display:none; color: var(--color-vision); font-size: 3rem; line-height: 1; filter: drop-shadow(0 0 12px rgba(8, 204, 171, 0.4));">&amp;</span>
         </div>
         <div class="flex-1 flex flex-col justify-center gap-4">
             <div class="nav-dot active" data-index="0" data-tooltip="Intro" onclick="goToSlide(0)"></div>
@@ -377,7 +430,7 @@
 
     <!-- Main Content Area -->
     <main class="flex-1 relative overflow-hidden">
-        
+
         <!-- Slide 0: Intro -->
         <div class="slide active" id="slide-0">
             <div class="flex-1 flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
@@ -408,10 +461,13 @@
                     Starten <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </button>
             </div>
-            
+
             <div class="absolute bottom-8 right-8 text-sm text-[var(--text-subtle)] font-mono flex items-center gap-3">
-                <img src="187x50-inverted (1).png" alt="vision&" class="h-5 opacity-80" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
-                <span style="display:none; font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 1.2rem; color: white;" class="opacity-80 tracking-wide">vision<span style="color: var(--color-vision);">&amp;</span></span>
+                <img src="187x50-inverted (1).png" alt="vision&" class="h-5 opacity-80"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <span
+                    style="display:none; font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 1.2rem; color: white;"
+                    class="opacity-80 tracking-wide">vision<span style="color: var(--color-vision);">&amp;</span></span>
                 <span id="current-date-display">| Datum laden...</span>
             </div>
         </div>
@@ -422,7 +478,7 @@
                 <div class="code-badge mb-3"># Problemstellung</div>
                 <h2 class="text-4xl md:text-5xl font-bold text-gradient">Der Status Quo - Wo es wehtut</h2>
             </header>
-            
+
             <div class="grid grid-cols-2 gap-8 flex-1">
                 <!-- Left: Problems -->
                 <div class="flex flex-col justify-center gap-6">
@@ -432,7 +488,8 @@
                         </div>
                         <div>
                             <h3 class="text-xl text-white mb-2">Das Namens-Chaos</h3>
-                            <p class="font-mono text-sm text-gray-400">App_Final, App_Neu_Final_v2, Finalissima_echt_jetzt</p>
+                            <p class="font-mono text-sm text-gray-400">App_Final, App_Neu_Final_v2,
+                                Finalissima_echt_jetzt</p>
                         </div>
                     </div>
                     <div class="glass p-6 flex items-start gap-4">
@@ -441,7 +498,8 @@
                         </div>
                         <div>
                             <h3 class="text-xl text-white mb-2">Die Handarbeit (Click-Ops)</h3>
-                            <p class="text-[var(--text-normal)]">Umgebungen mühsam im Portal zusammenklicken. Inkonsistenzen zwischen Dev, Test & Prod sind vorprogrammiert.</p>
+                            <p class="text-[var(--text-normal)]">Umgebungen mühsam im Portal zusammenklicken.
+                                Inkonsistenzen zwischen Dev, Test & Prod sind vorprogrammiert.</p>
                         </div>
                     </div>
                     <div class="glass p-6 flex items-start gap-4">
@@ -450,7 +508,8 @@
                         </div>
                         <div>
                             <h3 class="text-xl text-white mb-2">Die Fehlerquelle Mensch</h3>
-                            <p class="text-[var(--text-normal)]">"Ich weiss nicht mehr, wo ich gestern diesen Haken gesetzt habe." Fehlende Dokumentation kritischer Einstellungen.</p>
+                            <p class="text-[var(--text-normal)]">"Ich weiss nicht mehr, wo ich gestern diesen Haken
+                                gesetzt habe." Fehlende Dokumentation kritischer Einstellungen.</p>
                         </div>
                     </div>
                 </div>
@@ -460,13 +519,15 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent"></div>
                     <div class="z-10 text-center">
                         <h3 class="text-2xl text-white mb-6">Die Angst vor dem Deployment</h3>
-                        <p class="text-red-300 italic mb-8 max-w-sm">"Wenn ich das jetzt ändere, geht vielleicht alles kaputt."</p>
-                        
-                        <button id="btn-chaos" class="bg-red-600/80 hover:bg-red-500 text-white px-8 py-4 rounded-xl font-bold text-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.5)]">
+                        <p class="text-red-300 italic mb-8 max-w-sm">"Wenn ich das jetzt ändere, geht vielleicht alles
+                            kaputt."</p>
+
+                        <button id="btn-chaos"
+                            class="bg-red-600/80 hover:bg-red-500 text-white px-8 py-4 rounded-xl font-bold text-xl transition-all shadow-[0_0_20px_rgba(220,38,38,0.5)]">
                             Manuell Deployen
                         </button>
                     </div>
-                    
+
                     <!-- Floating Error Elements (Hidden initially) -->
                     <div id="chaos-errors" class="absolute inset-0 pointer-events-none"></div>
                 </div>
@@ -480,24 +541,26 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gradient">Git: Die Zeitmaschine</h2>
                 <p class="text-xl mt-2">Die Parallelwelt: Versionskontrolle, Branching & Zusammenarbeit im Team.</p>
             </header>
-            
+
             <div class="flex gap-6 flex-1 pb-6">
-                <!-- Left: Theory & Concepts (Updated to match image concepts) -->
+                <!-- Left: Theory & Concepts -->
                 <div class="w-1/3 flex flex-col gap-4 justify-center">
                     <div class="glass p-4 border-l-4" style="border-left-color: var(--color-cyan)">
                         <div class="flex items-center gap-3 mb-1">
                             <i data-lucide="download-cloud" class="text-[var(--color-cyan)] w-5 h-5"></i>
                             <h4 class="text-md font-bold text-white">Pull & Fetch</h4>
                         </div>
-                        <p class="text-xs text-gray-400">Team-Abgleich: Änderungen der Kollegen holen.<br>Pull = Holen & Zusammenführen. Fetch = Nur Holen.</p>
+                        <p class="text-xs text-gray-400">Team-Abgleich: Änderungen der Kollegen holen.<br>Pull = Holen &
+                            Zusammenführen. Fetch = Nur Holen.</p>
                     </div>
-                    
+
                     <div class="glass p-4 border-l-4" style="border-left-color: var(--color-emerald)">
                         <div class="flex items-center gap-3 mb-1">
                             <i data-lucide="save" class="text-[var(--color-emerald)] w-5 h-5"></i>
                             <h4 class="text-md font-bold text-white">Commit</h4>
                         </div>
-                        <p class="text-xs text-gray-400">Speicherpunkt: Einen festen Knoten im Verlauf erstellen. Funktioniert wie "Speichern unter".</p>
+                        <p class="text-xs text-gray-400">Speicherpunkt: Einen festen Knoten im Verlauf erstellen.
+                            Funktioniert wie "Speichern unter".</p>
                     </div>
 
                     <div class="glass p-4 border-l-4" style="border-left-color: var(--color-pink)">
@@ -505,15 +568,17 @@
                             <i data-lucide="git-branch" class="text-[var(--color-pink)] w-5 h-5"></i>
                             <h4 class="text-md font-bold text-white">Branch</h4>
                         </div>
-                        <p class="text-xs text-gray-400">Verzweigung: Sichere, parallele Kopie erstellen. Unabhängiges Arbeiten ohne Störung anderer.</p>
+                        <p class="text-xs text-gray-400">Verzweigung: Sichere, parallele Kopie erstellen. Unabhängiges
+                            Arbeiten ohne Störung anderer.</p>
                     </div>
-                    
+
                     <div class="glass p-4 border-l-4" style="border-left-color: var(--color-purple)">
                         <div class="flex items-center gap-3 mb-1">
                             <i data-lucide="git-merge" class="text-[var(--color-purple)] w-5 h-5"></i>
                             <h4 class="text-md font-bold text-white">Merge</h4>
                         </div>
-                        <p class="text-xs text-gray-400">Zusammenführung: Fertige Arbeit aus einem Branch sicher in einen anderen (z.B. Main) integrieren.</p>
+                        <p class="text-xs text-gray-400">Zusammenführung: Fertige Arbeit aus einem Branch sicher in
+                            einen anderen (z.B. Main) integrieren.</p>
                     </div>
                 </div>
 
@@ -521,32 +586,43 @@
                 <div class="w-2/3 glass flex flex-col p-6 relative overflow-hidden">
                     <div class="flex justify-between items-center mb-2 z-30">
                         <h3 class="text-white font-bold text-lg">Der typische DevOps-Flow im Team</h3>
-                        <div class="text-xs text-gray-400 bg-black/50 px-3 py-1 rounded-full border border-gray-700 font-mono">Schritt <span id="git-step-counter">0</span> / 9</div>
+                        <div
+                            class="text-xs text-gray-400 bg-black/50 px-3 py-1 rounded-full border border-gray-700 font-mono">
+                            Schritt <span id="git-step-counter">0</span> / 9</div>
                     </div>
-                    
+
                     <!-- Explanation Box -->
-                    <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 mb-4 z-30 min-h-[60px] flex items-center justify-center text-center">
-                        <p id="git-step-text" class="text-sm text-blue-200">Klicke auf "Nächster Schritt", um den Branching-Prozess zu starten.</p>
+                    <div
+                        class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 mb-4 z-30 min-h-[60px] flex items-center justify-center text-center">
+                        <p id="git-step-text" class="text-sm text-blue-200">Klicke auf "Nächster Schritt", um den
+                            Branching-Prozess zu starten.</p>
                     </div>
 
                     <!-- Git Graph Area -->
-                    <div class="flex-1 relative w-full rounded-xl bg-black/40 border border-gray-800 overflow-hidden" id="git-graph-area">
+                    <div class="flex-1 relative w-full rounded-xl bg-black/40 border border-gray-800 overflow-hidden"
+                        id="git-graph-area">
                         <!-- SVG for Connections -->
                         <svg class="absolute inset-0 w-full h-full" id="git-svg"></svg>
-                        
+
                         <!-- Labels (Static but initially hidden) -->
-                        <div class="git-label text-[var(--git-main)]" style="left: 2%; top: 15%;" data-show-at="0">Main Branch<br><span class="text-xs text-gray-400 font-normal">(Stabile Version)</span></div>
-                        <div class="git-label text-[var(--git-dev)]" style="left: 2%; top: 40%;" data-show-at="1">Dev Branch<br><span class="text-xs text-gray-400 font-normal">(Werkstatt)</span></div>
-                        <div class="git-label text-[var(--git-feat)]" style="left: 2%; top: 65%;" data-show-at="3">Feature Branch<br><span class="text-xs text-gray-400 font-normal">(Funktion A)</span></div>
-                        <div class="git-label text-[var(--git-bug)]" style="left: 2%; top: 90%;" data-show-at="4">Bugfix Branch<br><span class="text-xs text-gray-400 font-normal">(Fehlerbehebung B)</span></div>
+                        <div class="git-label text-[var(--git-main)]" style="left: 2%; top: 15%;" data-show-at="0">Main
+                            Branch<br><span class="text-xs text-gray-400 font-normal">(Stabile Version)</span></div>
+                        <div class="git-label text-[var(--git-dev)]" style="left: 2%; top: 40%;" data-show-at="1">Dev
+                            Branch<br><span class="text-xs text-gray-400 font-normal">(Werkstatt)</span></div>
+                        <div class="git-label text-[var(--git-feat)]" style="left: 2%; top: 65%;" data-show-at="3">
+                            Feature Branch<br><span class="text-xs text-gray-400 font-normal">(Funktion A)</span></div>
+                        <div class="git-label text-[var(--git-bug)]" style="left: 2%; top: 90%;" data-show-at="4">Bugfix
+                            Branch<br><span class="text-xs text-gray-400 font-normal">(Fehlerbehebung B)</span></div>
                     </div>
 
                     <!-- Controls -->
                     <div class="mt-4 flex justify-between items-center z-30">
-                        <button onclick="gitSim.reset()" class="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-1">
+                        <button onclick="gitSim.reset()"
+                            class="text-gray-400 hover:text-white text-sm transition-colors flex items-center gap-1">
                             <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Neu starten
                         </button>
-                        <button onclick="gitSim.next()" id="btn-git-next" class="btn-primary" style="border-color: var(--color-cyan)">
+                        <button onclick="gitSim.next()" id="btn-git-next" class="btn-primary"
+                            style="border-color: var(--color-cyan)">
                             Nächster Schritt <i data-lucide="chevron-right" class="w-4 h-4"></i>
                         </button>
                     </div>
@@ -556,176 +632,242 @@
 
         <!-- Slide 3: Was ist DevOps? -->
         <div class="slide" id="slide-3">
-             <header class="mb-6">
+            <header class="mb-6">
                 <div class="code-badge mb-3"># Konzept</div>
                 <h2 class="text-4xl md:text-5xl font-bold text-gradient">Was ist DevOps?</h2>
                 <p class="text-xl mt-2">Das Einreissen der "Mauer der Verwirrung" zwischen Entwicklung und Betrieb.</p>
             </header>
-            
+
             <div class="flex flex-col flex-1 pb-6 gap-6">
-                 <!-- Interaction Area -->
-                 <div class="glass flex-1 relative flex flex-col items-center justify-center p-8 overflow-hidden" id="devops-sim-container">
-                      
-                      <!-- Initial State: Wall of Confusion -->
-                      <div class="flex items-center justify-center w-full gap-8 relative z-10 transition-all duration-700" id="devops-entities">
-                           <!-- DEV -->
-                           <div class="glass p-6 text-center w-64 border-t-4 transition-transform duration-700" style="border-top-color: var(--color-cyan)" id="box-dev">
-                               <i data-lucide="code-2" class="w-12 h-12 text-[var(--color-cyan)] mx-auto mb-4"></i>
-                               <h3 class="text-2xl font-bold mb-2">Dev</h3>
-                               <p class="text-sm text-gray-400">Development</p>
-                               <ul class="text-xs text-left mt-4 space-y-2 text-gray-300">
-                                   <li>• Will Code veröffentlichen</li>
-                                   <li>• Baut neue Features (Agil)</li>
-                                   <li>• Bewertet nach Time-to-Market</li>
-                               </ul>
-                           </div>
-                           
-                           <!-- The Wall -->
-                           <div class="w-8 h-48 bg-red-500/80 rounded flex items-center justify-center transition-all duration-500 relative overflow-hidden" id="box-wall">
-                                <span class="text-white font-bold transform -rotate-90 whitespace-nowrap tracking-widest uppercase text-sm drop-shadow-md z-10">Konflikt</span>
-                                <div class="absolute inset-0 bg-stripes opacity-20"></div>
-                           </div>
+                <!-- Interaction Area -->
+                <div class="glass flex-1 relative flex flex-col items-center justify-center p-8 overflow-hidden"
+                    id="devops-sim-container">
 
-                           <!-- OPS -->
-                           <div class="glass p-6 text-center w-64 border-t-4 transition-transform duration-700" style="border-top-color: var(--color-pink)" id="box-ops">
-                               <i data-lucide="server-cog" class="w-12 h-12 text-[var(--color-pink)] mx-auto mb-4"></i>
-                               <h3 class="text-2xl font-bold mb-2">Ops</h3>
-                               <p class="text-sm text-gray-400">Operations</p>
-                               <ul class="text-xs text-left mt-4 space-y-2 text-gray-300">
-                                   <li>• Will 100% Stabilität</li>
-                                   <li>• Vermeidet Risiken & Ausfälle</li>
-                                   <li>• Bewertet nach Uptime</li>
-                               </ul>
-                           </div>
-                      </div>
-                      
-                      <!-- Target State: Clean 1200x600 DevOps Infinity Loop (Hidden initially) -->
-                      <div id="devops-infinity-diagram" class="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-1000 scale-90 z-20">
-                          <div class="relative w-[1200px] h-[600px]">
-                              
-                              <!-- Central title -->
-                              <div class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-10 bg-[var(--bg-base)] px-4 py-2 rounded-xl">
-                                  <div class="text-4xl font-bold tracking-widest glow-text text-white">DevOps</div>
-                              </div>
+                    <!-- Initial State: Wall of Confusion -->
+                    <div class="flex items-center justify-center w-full gap-8 relative z-10 transition-all duration-700"
+                        id="devops-entities">
+                        <!-- DEV -->
+                        <div class="glass p-6 text-center w-64 border-t-4 transition-transform duration-700"
+                            style="border-top-color: var(--color-cyan)" id="box-dev">
+                            <i data-lucide="code-2" class="w-12 h-12 text-[var(--color-cyan)] mx-auto mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Dev</h3>
+                            <p class="text-sm text-gray-400">Development</p>
+                            <ul class="text-xs text-left mt-4 space-y-2 text-gray-300">
+                                <li>• Will Code veröffentlichen</li>
+                                <li>• Baut neue Features (Agil)</li>
+                                <li>• Bewertet nach Time-to-Market</li>
+                            </ul>
+                        </div>
 
-                              <!-- Labels for CI, CD -->
-                              <div class="absolute left-[27%] top-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-0">
-                                  <div class="text-[var(--color-cyan)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">Continuous<br>Integration</div>
-                              </div>
-                              <div class="absolute left-[73%] top-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-0">
-                                  <div class="text-[var(--color-pink)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">Continuous<br>Delivery</div>
-                              </div>
-                              <div class="absolute left-[50%] top-[60%] -translate-x-1/2 -translate-y-1/2 text-center z-0 w-full">
-                                  <div class="text-[var(--color-purple)] font-bold tracking-[0.2em] uppercase text-xs opacity-70 flex items-center justify-center gap-2">
-                                      <i data-lucide="arrow-left" class="w-4 h-4"></i> Continuous Feedback <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                                  </div>
-                              </div>
+                        <!-- The Wall -->
+                        <div class="w-8 h-48 bg-red-500/80 rounded flex items-center justify-center transition-all duration-500 relative overflow-hidden"
+                            id="box-wall">
+                            <span
+                                class="text-white font-bold transform -rotate-90 whitespace-nowrap tracking-widest uppercase text-sm drop-shadow-md z-10">Konflikt</span>
+                            <div class="absolute inset-0 bg-stripes opacity-20"></div>
+                        </div>
 
-                              <!-- SVG Infinity Path Background -->
-                              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 600">
-                                  <defs>
-                                      <linearGradient id="infinity-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                          <stop offset="0%" stop-color="var(--color-cyan)" />
-                                          <stop offset="50%" stop-color="var(--color-purple)" />
-                                          <stop offset="100%" stop-color="var(--color-pink)" />
-                                      </linearGradient>
-                                  </defs>
-                                  <!-- Extra wide, symmetric Infinity curve -->
-                                  <path d="M 600 300 C 450 50, 200 50, 200 300 C 200 550, 450 550, 600 300 C 750 50, 1000 50, 1000 300 C 1000 550, 750 550, 600 300" 
-                                        fill="none" stroke="url(#infinity-grad)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" 
-                                        class="opacity-40 drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]"/>
-                                  
-                                  <!-- Animated Dashed line on top to show flow -->
-                                  <path d="M 600 300 C 450 50, 200 50, 200 300 C 200 550, 450 550, 600 300 C 750 50, 1000 50, 1000 300 C 1000 550, 750 550, 600 300" 
-                                        fill="none" stroke="white" stroke-width="3" stroke-dasharray="10 20" 
-                                        class="opacity-60 animate-flow"/>
-                              </svg>
+                        <!-- OPS -->
+                        <div class="glass p-6 text-center w-64 border-t-4 transition-transform duration-700"
+                            style="border-top-color: var(--color-pink)" id="box-ops">
+                            <i data-lucide="server-cog" class="w-12 h-12 text-[var(--color-pink)] mx-auto mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Ops</h3>
+                            <p class="text-sm text-gray-400">Operations</p>
+                            <ul class="text-xs text-left mt-4 space-y-2 text-gray-300">
+                                <li>• Will 100% Stabilität</li>
+                                <li>• Vermeidet Risiken & Ausfälle</li>
+                                <li>• Bewertet nach Uptime</li>
+                            </ul>
+                        </div>
+                    </div>
 
-                              <!-- The 8 Phases Nodes placed precisely on the curve -->
-                              <div class="absolute z-10 left-[37.5%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="file-text" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Plan</div>
-                              </div>
-                              <div class="absolute z-10 left-[16.66%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="code-2" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Code</div>
-                              </div>
-                              <div class="absolute z-10 left-[16.66%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="hammer" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Build</div>
-                              </div>
-                              <div class="absolute z-10 left-[37.5%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="test-tube-2" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Test</div>
-                              </div>
-                              <div class="absolute z-10 left-[62.5%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="tag" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Release</div>
-                              </div>
-                              <div class="absolute z-10 left-[83.33%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="rocket" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Deploy</div>
-                              </div>
-                              <div class="absolute z-10 left-[83.33%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="server-cog" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Operate</div>
-                              </div>
-                              <div class="absolute z-10 left-[62.5%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                                  <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="activity" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                                  <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Monitor</div>
-                              </div>
-                          </div>
-                      </div>
+                    <!-- Target State: Clean 1200x600 DevOps Infinity Loop -->
+                    <div id="devops-infinity-diagram"
+                        class="absolute inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-all duration-1000 scale-90 z-20">
+                        <div class="relative w-[1200px] h-[600px]">
+                            <!-- Central title -->
+                            <div
+                                class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-10 bg-[var(--bg-base)] px-4 py-2 rounded-xl">
+                                <div class="text-4xl font-bold tracking-widest glow-text text-white">DevOps</div>
+                            </div>
+                            <!-- Labels for CI, CD -->
+                            <div
+                                class="absolute left-[27%] top-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-0">
+                                <div
+                                    class="text-[var(--color-cyan)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">
+                                    Continuous<br>Integration</div>
+                            </div>
+                            <div
+                                class="absolute left-[73%] top-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-0">
+                                <div
+                                    class="text-[var(--color-pink)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">
+                                    Continuous<br>Delivery</div>
+                            </div>
+                            <div
+                                class="absolute left-[50%] top-[60%] -translate-x-1/2 -translate-y-1/2 text-center z-0 w-full">
+                                <div
+                                    class="text-[var(--color-purple)] font-bold tracking-[0.2em] uppercase text-xs opacity-70 flex items-center justify-center gap-2">
+                                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Continuous Feedback <i
+                                        data-lucide="arrow-left" class="w-4 h-4"></i>
+                                </div>
+                            </div>
 
-                      <div class="absolute bottom-6 z-30">
-                          <button onclick="uniteDevOps()" id="btn-unite" class="btn-primary" style="border-color: var(--color-purple)">
-                              <i data-lucide="hammer"></i> Kultur & Tools vereinen
-                          </button>
-                      </div>
-                 </div>
+                            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 600">
+                                <defs>
+                                    <linearGradient id="infinity-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="var(--color-cyan)" />
+                                        <stop offset="50%" stop-color="var(--color-purple)" />
+                                        <stop offset="100%" stop-color="var(--color-pink)" />
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    d="M 600 300 C 450 50, 200 50, 200 300 C 200 550, 450 550, 600 300 C 750 50, 1000 50, 1000 300 C 1000 550, 750 550, 600 300"
+                                    fill="none" stroke="url(#infinity-grad)" stroke-width="16" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    class="opacity-40 drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]" />
+                                <path
+                                    d="M 600 300 C 450 50, 200 50, 200 300 C 200 550, 450 550, 600 300 C 750 50, 1000 50, 1000 300 C 1000 550, 750 550, 600 300"
+                                    fill="none" stroke="white" stroke-width="3" stroke-dasharray="10 20"
+                                    class="opacity-60 animate-flow" />
+                            </svg>
 
-                 <!-- Benefits Info Cards -->
-                 <div class="grid grid-cols-3 gap-4" id="devops-benefits" style="opacity: 0.5; filter: grayscale(100%); transition: all 1s;">
-                      <div class="glass p-4 border-l-2" style="border-left-color: var(--color-emerald)">
-                          <h4 class="font-bold text-white mb-1"><i data-lucide="rocket" class="w-4 h-4 inline mr-1 text-[var(--color-emerald)]"></i>Schnelligkeit</h4>
-                          <p class="text-xs text-gray-400">Kürzere Entwicklungszyklen. Änderungen gelangen automatisiert und rasch in die Produktion.</p>
-                      </div>
-                      <div class="glass p-4 border-l-2" style="border-left-color: var(--color-gold)">
-                          <h4 class="font-bold text-white mb-1"><i data-lucide="shield-check" class="w-4 h-4 inline mr-1 text-[var(--color-gold)]"></i>Zuverlässigkeit</h4>
-                          <p class="text-xs text-gray-400">Höhere Qualität durch standardisierte CI/CD Pipelines und automatisierte Tests.</p>
-                      </div>
-                      <div class="glass p-4 border-l-2" style="border-left-color: var(--color-cyan)">
-                          <h4 class="font-bold text-white mb-1"><i data-lucide="users" class="w-4 h-4 inline mr-1 text-[var(--color-cyan)]"></i>Gemeinsame Verantwortung</h4>
-                          <p class="text-xs text-gray-400">Kein "Finger-Pointing" mehr. "You build it, you run it." Ein Team, ein gemeinsames Ziel.</p>
-                      </div>
-                 </div>
+                            <div class="absolute z-10 left-[37.5%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                                    <i data-lucide="file-text" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Plan</div>
+                            </div>
+                            <div class="absolute z-10 left-[16.66%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                                    <i data-lucide="code-2" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Code</div>
+                            </div>
+                            <div class="absolute z-10 left-[16.66%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                                    <i data-lucide="hammer" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Build</div>
+                            </div>
+                            <div class="absolute z-10 left-[37.5%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                                    <i data-lucide="test-tube-2" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Test</div>
+                            </div>
+                            <div class="absolute z-10 left-[62.5%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                                    <i data-lucide="tag" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Release</div>
+                            </div>
+                            <div class="absolute z-10 left-[83.33%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                                    <i data-lucide="rocket" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Deploy</div>
+                            </div>
+                            <div class="absolute z-10 left-[83.33%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                                    <i data-lucide="server-cog" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Operate</div>
+                            </div>
+                            <div class="absolute z-10 left-[62.5%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
+                                <div
+                                    class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                                    <i data-lucide="activity" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                                </div>
+                                <div
+                                    class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                                    Monitor</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-6 z-30">
+                        <button onclick="uniteDevOps()" id="btn-unite" class="btn-primary"
+                            style="border-color: var(--color-purple)">
+                            <i data-lucide="hammer"></i> Kultur & Tools vereinen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Benefits Info Cards -->
+                <div class="grid grid-cols-3 gap-4" id="devops-benefits"
+                    style="opacity: 0.5; filter: grayscale(100%); transition: all 1s;">
+                    <div class="glass p-4 border-l-2" style="border-left-color: var(--color-emerald)">
+                        <h4 class="font-bold text-white mb-1"><i data-lucide="rocket"
+                                class="w-4 h-4 inline mr-1 text-[var(--color-emerald)]"></i>Schnelligkeit</h4>
+                        <p class="text-xs text-gray-400">Kürzere Entwicklungszyklen. Änderungen gelangen automatisiert
+                            und rasch in die Produktion.</p>
+                    </div>
+                    <div class="glass p-4 border-l-2" style="border-left-color: var(--color-gold)">
+                        <h4 class="font-bold text-white mb-1"><i data-lucide="shield-check"
+                                class="w-4 h-4 inline mr-1 text-[var(--color-gold)]"></i>Zuverlässigkeit</h4>
+                        <p class="text-xs text-gray-400">Höhere Qualität durch standardisierte CI/CD Pipelines und
+                            automatisierte Tests.</p>
+                    </div>
+                    <div class="glass p-4 border-l-2" style="border-left-color: var(--color-cyan)">
+                        <h4 class="font-bold text-white mb-1"><i data-lucide="users"
+                                class="w-4 h-4 inline mr-1 text-[var(--color-cyan)]"></i>Gemeinsame Verantwortung</h4>
+                        <p class="text-xs text-gray-400">Kein "Finger-Pointing" mehr. "You build it, you run it." Ein
+                            Team, ein gemeinsames Ziel.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Slide 4: NEW - DevOps Tool-Landschaft -->
+        <!-- Slide 4: DevOps Tool-Landschaft -->
         <div class="slide" id="slide-4">
             <header class="mb-2">
                 <h2 class="text-4xl md:text-5xl font-bold text-gradient text-center">Die DevOps Tool-Landschaft</h2>
-                <p class="text-xl mt-2 text-center text-gray-300">Für jede Phase im Lebenszyklus die passenden, marktführenden Werkzeuge.</p>
+                <p class="text-xl mt-2 text-center text-gray-300">Für jede Phase im Lebenszyklus die passenden,
+                    marktführenden Werkzeuge.</p>
             </header>
-            
-            <!-- Exact same loop layout, but static and with uniform tool badges -->
+
             <div class="flex-1 relative flex items-center justify-center p-4">
                 <div class="relative w-[1200px] h-[600px] transform scale-[0.85] 2xl:scale-100 transform-origin-center">
-                    
-                    <div class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-10 bg-[var(--bg-base)] px-4 py-2 rounded-xl">
+
+                    <div
+                        class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-10 bg-[var(--bg-base)] px-4 py-2 rounded-xl">
                         <div class="text-4xl font-bold tracking-widest glow-text text-white">DevOps</div>
                     </div>
 
                     <div class="absolute left-[27%] top-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-0">
-                        <div class="text-[var(--color-cyan)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">Continuous<br>Integration</div>
+                        <div class="text-[var(--color-cyan)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">
+                            Continuous<br>Integration</div>
                     </div>
                     <div class="absolute left-[73%] top-[50%] -translate-x-1/2 -translate-y-1/2 text-center z-0">
-                        <div class="text-[var(--color-pink)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">Continuous<br>Delivery</div>
+                        <div class="text-[var(--color-pink)] font-bold tracking-[0.2em] uppercase text-sm opacity-60">
+                            Continuous<br>Delivery</div>
                     </div>
                     <div class="absolute left-[50%] top-[60%] -translate-x-1/2 -translate-y-1/2 text-center z-0 w-full">
-                        <div class="text-[var(--color-purple)] font-bold tracking-[0.2em] uppercase text-xs opacity-70 flex items-center justify-center gap-2">
-                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Continuous Feedback <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                        <div
+                            class="text-[var(--color-purple)] font-bold tracking-[0.2em] uppercase text-xs opacity-70 flex items-center justify-center gap-2">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Continuous Feedback <i
+                                data-lucide="arrow-left" class="w-4 h-4"></i>
                         </div>
                     </div>
 
@@ -737,47 +879,39 @@
                                 <stop offset="100%" stop-color="var(--color-pink)" />
                             </linearGradient>
                         </defs>
-                        <!-- Main Infinity Loop -->
-                        <path d="M 600 300 C 450 50, 200 50, 200 300 C 200 550, 450 550, 600 300 C 750 50, 1000 50, 1000 300 C 1000 550, 750 550, 600 300" 
-                              fill="none" stroke="url(#infinity-grad-tools)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" 
-                              class="opacity-50 drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]"/>
-                              
-                        <!-- Connecting lines for tool badges (Calculated strictly based on 1200x600 px) -->
+                        <path
+                            d="M 600 300 C 450 50, 200 50, 200 300 C 200 550, 450 550, 600 300 C 750 50, 1000 50, 1000 300 C 1000 550, 750 550, 600 300"
+                            fill="none" stroke="url(#infinity-grad-tools)" stroke-width="16" stroke-linecap="round"
+                            stroke-linejoin="round" class="opacity-50 drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]" />
+
+                        <!-- Connecting lines for tool badges -->
                         <g stroke="rgba(255,255,255,0.2)" stroke-width="1.5" stroke-dasharray="3 3">
-                            <!-- Plan -->
                             <line x1="450" y1="160" x2="360" y2="38" />
                             <line x1="450" y1="160" x2="520" y2="38" />
                             <line x1="450" y1="160" x2="360" y2="94" />
                             <line x1="450" y1="160" x2="520" y2="94" />
-                            <!-- Code -->
                             <line x1="200" y1="160" x2="100" y2="78" />
                             <line x1="200" y1="160" x2="260" y2="78" />
                             <line x1="200" y1="160" x2="100" y2="134" />
-                            <!-- Build -->
                             <line x1="200" y1="440" x2="100" y2="466" />
                             <line x1="200" y1="440" x2="100" y2="522" />
                             <line x1="200" y1="440" x2="100" y2="578" />
                             <line x1="200" y1="440" x2="260" y2="578" />
-                            <!-- Test -->
                             <line x1="450" y1="440" x2="360" y2="522" />
                             <line x1="450" y1="440" x2="520" y2="522" />
                             <line x1="450" y1="440" x2="360" y2="578" />
-                            <!-- Release -->
                             <line x1="750" y1="160" x2="680" y2="38" />
                             <line x1="750" y1="160" x2="840" y2="38" />
                             <line x1="750" y1="160" x2="680" y2="94" />
                             <line x1="750" y1="160" x2="840" y2="94" />
-                            <!-- Deploy -->
                             <line x1="1000" y1="160" x2="940" y2="78" />
                             <line x1="1000" y1="160" x2="1100" y2="78" />
                             <line x1="1000" y1="160" x2="1100" y2="134" />
-                            <!-- Operate -->
                             <line x1="1000" y1="440" x2="1100" y2="410" />
                             <line x1="1000" y1="440" x2="1100" y2="466" />
                             <line x1="1000" y1="440" x2="1100" y2="522" />
                             <line x1="1000" y1="440" x2="1100" y2="578" />
                             <line x1="1000" y1="440" x2="940" y2="578" />
-                            <!-- Monitor -->
                             <line x1="750" y1="440" x2="680" y2="522" />
                             <line x1="750" y1="440" x2="840" y2="522" />
                             <line x1="750" y1="440" x2="680" y2="578" />
@@ -787,216 +921,348 @@
 
                     <!-- The 8 Phases Nodes -->
                     <div class="absolute z-20 left-[37.5%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="file-text" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Plan</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                            <i data-lucide="file-text" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Plan</div>
                     </div>
                     <div class="absolute z-20 left-[16.66%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="code-2" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Code</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                            <i data-lucide="code-2" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Code</div>
                     </div>
                     <div class="absolute z-20 left-[16.66%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="hammer" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Build</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                            <i data-lucide="hammer" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Build</div>
                     </div>
                     <div class="absolute z-20 left-[37.5%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80"><i data-lucide="test-tube-2" class="w-7 h-7 text-[var(--color-cyan)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Test</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-cyan)] shadow-[0_0_15px_rgba(14,165,233,0.4)] bg-black/80">
+                            <i data-lucide="test-tube-2" class="w-7 h-7 text-[var(--color-cyan)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Test</div>
                     </div>
                     <div class="absolute z-20 left-[62.5%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="tag" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Release</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                            <i data-lucide="tag" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Release</div>
                     </div>
                     <div class="absolute z-20 left-[83.33%] top-[26.66%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="rocket" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Deploy</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                            <i data-lucide="rocket" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Deploy</div>
                     </div>
                     <div class="absolute z-20 left-[83.33%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="server-cog" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Operate</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                            <i data-lucide="server-cog" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Operate</div>
                     </div>
                     <div class="absolute z-20 left-[62.5%] top-[73.33%] -translate-x-1/2 -translate-y-1/2">
-                        <div class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80"><i data-lucide="activity" class="w-7 h-7 text-[var(--color-pink)]"></i></div>
-                        <div class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">Monitor</div>
+                        <div
+                            class="glass w-14 h-14 flex items-center justify-center rounded-full mb-1 border-[var(--color-pink)] shadow-[0_0_15px_rgba(244,63,94,0.4)] bg-black/80">
+                            <i data-lucide="activity" class="w-7 h-7 text-[var(--color-pink)]"></i>
+                        </div>
+                        <div
+                            class="text-[11px] font-bold uppercase tracking-wider bg-black/90 px-3 py-1 rounded text-white text-center border border-gray-800">
+                            Monitor</div>
                     </div>
 
                     <!-- Tool Badges (Absolute positioning in %) -->
-                    
-                    <!-- PLAN Tools -->
-                    <div class="tool-badge" style="left: 24.16%; top: 3.33%;"><i class="devicon-slack-plain text-white"></i> Slack</div>
-                    <div class="tool-badge" style="left: 37.5%; top: 3.33%;"><i class="devicon-trello-plain colored"></i> Trello</div>
-                    <div class="tool-badge" style="left: 24.16%; top: 12.66%;"><i class="devicon-jira-plain colored"></i> Jira</div>
-                    <div class="tool-badge" style="left: 37.5%; top: 12.66%;"><i class="devicon-confluence-original colored"></i> Confluence</div>
-
-                    <!-- CODE Tools -->
-                    <div class="tool-badge" style="left: 2.5%; top: 10%;"><i class="devicon-github-original text-white"></i> GitHub</div>
-                    <div class="tool-badge" style="left: 15.83%; top: 10%;"><i class="devicon-git-plain colored"></i> Git</div>
-                    <div class="tool-badge" style="left: 2.5%; top: 19.33%;"><i class="devicon-bitbucket-original colored"></i> Bitbucket</div>
-
-                    <!-- BUILD Tools -->
-                    <div class="tool-badge" style="left: 2.5%; top: 74.66%;"><i class="devicon-docker-plain colored"></i> Docker</div>
-                    <div class="tool-badge" style="left: 2.5%; top: 84%;"><i class="devicon-maven-plain colored"></i> Maven</div>
-                    <div class="tool-badge" style="left: 2.5%; top: 93.33%;"><i class="devicon-npm-original-wordmark colored"></i> npm</div>
-                    <div class="tool-badge" style="left: 15.83%; top: 93.33%;"><i class="devicon-gradle-plain colored"></i> Gradle</div>
-
-                    <!-- TEST Tools -->
-                    <div class="tool-badge" style="left: 24.16%; top: 84%;"><i class="devicon-jest-plain colored"></i> Jest</div>
-                    <div class="tool-badge" style="left: 37.5%; top: 84%;"><i data-lucide="flask-conical" class="text-green-400"></i> JUnit</div>
-                    <div class="tool-badge" style="left: 24.16%; top: 93.33%;"><i class="devicon-sonarqube-original colored"></i> SonarQube</div>
-
-                    <!-- RELEASE Tools -->
-                    <div class="tool-badge" style="left: 50.83%; top: 3.33%;"><i class="devicon-jenkins-line colored"></i> Jenkins</div>
-                    <div class="tool-badge" style="left: 64.16%; top: 3.33%;"><i class="devicon-github-original text-white"></i> GH Actions</div>
-                    <div class="tool-badge" style="left: 50.83%; top: 12.66%;"><i class="devicon-gitlab-plain colored"></i> GitLab CI</div>
-                    <div class="tool-badge" style="left: 64.16%; top: 12.66%;"><i class="devicon-bamboo-original colored"></i> Bamboo</div>
-
-                    <!-- DEPLOY Tools -->
-                    <div class="tool-badge" style="left: 72.5%; top: 10%;"><i class="devicon-terraform-plain colored"></i> Terraform</div>
-                    <div class="tool-badge" style="left: 85.83%; top: 10%;"><i class="devicon-argocd-plain colored"></i> ArgoCD</div>
-                    <div class="tool-badge" style="left: 85.83%; top: 19.33%;"><i data-lucide="bot" class="text-yellow-400"></i> Puppet</div>
-
-                    <!-- OPERATE Tools -->
-                    <div class="tool-badge" style="left: 85.83%; top: 65.33%;"><i class="devicon-ansible-plain colored"></i> Ansible</div>
-                    <div class="tool-badge" style="left: 85.83%; top: 74.66%;"><i class="devicon-amazonwebservices-original colored"></i> AWS</div>
-                    <div class="tool-badge" style="left: 85.83%; top: 84%;"><i class="devicon-azure-plain colored"></i> Azure</div>
-                    <div class="tool-badge" style="left: 85.83%; top: 93.33%;"><i class="devicon-googlecloud-plain colored"></i> GCP</div>
-                    <div class="tool-badge" style="left: 72.5%; top: 93.33%;"><i class="devicon-kubernetes-plain colored"></i> Kubernetes</div>
-
-                    <!-- MONITOR Tools -->
-                    <div class="tool-badge" style="left: 50.83%; top: 84%;"><i class="devicon-grafana-original colored"></i> Grafana</div>
-                    <div class="tool-badge" style="left: 64.16%; top: 84%;"><i data-lucide="dog" class="text-purple-400"></i> Datadog</div>
-                    <div class="tool-badge" style="left: 50.83%; top: 93.33%;"><i class="devicon-prometheus-original colored"></i> Prometheus</div>
-                    <div class="tool-badge" style="left: 64.16%; top: 93.33%;"><i class="devicon-splunk-original-wordmark text-pink-400"></i> Splunk</div>
-
+                    <div class="tool-badge" style="left: 24.16%; top: 3.33%;"><i
+                            class="devicon-slack-plain text-white"></i> Slack</div>
+                    <div class="tool-badge" style="left: 37.5%; top: 3.33%;"><i
+                            class="devicon-trello-plain colored"></i> Trello</div>
+                    <div class="tool-badge" style="left: 24.16%; top: 12.66%;"><i
+                            class="devicon-jira-plain colored"></i> Jira</div>
+                    <div class="tool-badge" style="left: 37.5%; top: 12.66%;"><i
+                            class="devicon-confluence-original colored"></i> Confluence</div>
+                    <div class="tool-badge" style="left: 2.5%; top: 10%;"><i
+                            class="devicon-github-original text-white"></i> GitHub</div>
+                    <div class="tool-badge" style="left: 15.83%; top: 10%;"><i class="devicon-git-plain colored"></i>
+                        Git</div>
+                    <div class="tool-badge" style="left: 2.5%; top: 19.33%;"><i
+                            class="devicon-bitbucket-original colored"></i> Bitbucket</div>
+                    <div class="tool-badge" style="left: 2.5%; top: 74.66%;"><i
+                            class="devicon-docker-plain colored"></i> Docker</div>
+                    <div class="tool-badge" style="left: 2.5%; top: 84%;"><i class="devicon-maven-plain colored"></i>
+                        Maven</div>
+                    <div class="tool-badge" style="left: 2.5%; top: 93.33%;"><i
+                            class="devicon-npm-original-wordmark colored"></i> npm</div>
+                    <div class="tool-badge" style="left: 15.83%; top: 93.33%;"><i
+                            class="devicon-gradle-plain colored"></i> Gradle</div>
+                    <div class="tool-badge" style="left: 24.16%; top: 84%;"><i class="devicon-jest-plain colored"></i>
+                        Jest</div>
+                    <div class="tool-badge" style="left: 37.5%; top: 84%;"><i data-lucide="flask-conical"
+                            class="text-green-400"></i> JUnit</div>
+                    <div class="tool-badge" style="left: 24.16%; top: 93.33%;"><i
+                            class="devicon-sonarqube-original colored"></i> SonarQube</div>
+                    <div class="tool-badge" style="left: 50.83%; top: 3.33%;"><i
+                            class="devicon-jenkins-line colored"></i> Jenkins</div>
+                    <div class="tool-badge" style="left: 64.16%; top: 3.33%;"><i
+                            class="devicon-github-original text-white"></i> GH Actions</div>
+                    <div class="tool-badge" style="left: 50.83%; top: 12.66%;"><i
+                            class="devicon-gitlab-plain colored"></i> GitLab CI</div>
+                    <div class="tool-badge" style="left: 64.16%; top: 12.66%;"><i
+                            class="devicon-bamboo-original colored"></i> Bamboo</div>
+                    <div class="tool-badge" style="left: 72.5%; top: 10%;"><i
+                            class="devicon-terraform-plain colored"></i> Terraform</div>
+                    <div class="tool-badge" style="left: 85.83%; top: 10%;"><i class="devicon-argocd-plain colored"></i>
+                        ArgoCD</div>
+                    <div class="tool-badge" style="left: 85.83%; top: 19.33%;"><i data-lucide="bot"
+                            class="text-yellow-400"></i> Puppet</div>
+                    <div class="tool-badge" style="left: 85.83%; top: 65.33%;"><i
+                            class="devicon-ansible-plain colored"></i> Ansible</div>
+                    <div class="tool-badge" style="left: 85.83%; top: 74.66%;"><i
+                            class="devicon-amazonwebservices-original colored"></i> AWS</div>
+                    <div class="tool-badge" style="left: 85.83%; top: 84%;"><i class="devicon-azure-plain colored"></i>
+                        Azure</div>
+                    <div class="tool-badge" style="left: 85.83%; top: 93.33%;"><i
+                            class="devicon-googlecloud-plain colored"></i> GCP</div>
+                    <div class="tool-badge" style="left: 72.5%; top: 93.33%;"><i
+                            class="devicon-kubernetes-plain colored"></i> Kubernetes</div>
+                    <div class="tool-badge" style="left: 50.83%; top: 84%;"><i
+                            class="devicon-grafana-original colored"></i> Grafana</div>
+                    <div class="tool-badge" style="left: 64.16%; top: 84%;"><i data-lucide="dog"
+                            class="text-purple-400"></i> Datadog</div>
+                    <div class="tool-badge" style="left: 50.83%; top: 93.33%;"><i
+                            class="devicon-prometheus-original colored"></i> Prometheus</div>
+                    <div class="tool-badge" style="left: 64.16%; top: 93.33%;"><i
+                            class="devicon-splunk-original-wordmark text-pink-400"></i> Splunk</div>
                 </div>
             </div>
         </div>
 
         <!-- Slide 5: Azure DevOps Toolchain -->
         <div class="slide" id="slide-5">
-            <header class="mb-8">
-                <div class="code-badge mb-3 text-[var(--color-pink)] border-[var(--color-pink)] bg-pink-500/10"># Microsofts Ökosystem</div>
+            <header class="mb-4">
+                <div class="code-badge mb-3 text-[var(--color-pink)] border-[var(--color-pink)] bg-pink-500/10">#
+                    Microsofts Ökosystem</div>
                 <h2 class="text-4xl md:text-5xl font-bold text-gradient">Die Azure DevOps Toolchain</h2>
-                <p class="text-xl mt-2">Eine einzige, integrierte Plattform für den gesamten DevOps-Kreislauf.</p>
+                <p class="text-xl mt-2">Eine integrierte Plattform für den gesamten DevOps-Kreislauf.</p>
             </header>
 
-            <div class="flex-1 flex flex-col gap-8 pb-8">
-                
+            <div class="flex-1 flex flex-col gap-4 pb-4">
+
                 <!-- DevOps Tools Grid -->
                 <div class="grid grid-cols-4 gap-4">
-                    <div class="glass p-5 flex flex-col items-center text-center transform transition-transform hover:-translate-y-1">
-                        <div class="w-12 h-12 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center mb-3">
+                    <div class="glass p-4 flex flex-col items-center text-center">
+                        <div
+                            class="w-10 h-10 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center mb-2">
                             <i data-lucide="kanban-square"></i>
                         </div>
-                        <h4 class="font-bold text-white mb-1">Azure Boards</h4>
-                        <p class="text-xs text-gray-400">Agile Planung, Sprints, Kanban und Tracking von Arbeitspaketen.</p>
+                        <h4 class="font-bold text-white text-sm mb-1">Azure Boards</h4>
+                        <p class="text-xs text-gray-400">Agile Planung, Sprints, Kanban.</p>
                     </div>
-                    <div class="glass p-5 flex flex-col items-center text-center transform transition-transform hover:-translate-y-1">
-                        <div class="w-12 h-12 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center mb-3">
+                    <div class="glass p-4 flex flex-col items-center text-center">
+                        <div
+                            class="w-10 h-10 rounded bg-orange-500/20 text-orange-400 flex items-center justify-center mb-2">
                             <i data-lucide="folder-git-2"></i>
                         </div>
-                        <h4 class="font-bold text-white mb-1">Azure Repos</h4>
-                        <p class="text-xs text-gray-400">Sicheres Hosting unserer Git-Repositories und Pull Requests.</p>
+                        <h4 class="font-bold text-white text-sm mb-1">Azure Repos</h4>
+                        <p class="text-xs text-gray-400">Sicheres Git-Hosting & PRs.</p>
                     </div>
-                    <div class="glass p-5 flex flex-col items-center text-center transform transition-transform hover:-translate-y-1 border-[var(--color-pink)] bg-pink-900/10">
-                        <div class="w-12 h-12 rounded bg-pink-500/20 text-[var(--color-pink)] flex items-center justify-center mb-3">
+                    <div
+                        class="glass p-4 flex flex-col items-center text-center border-[var(--color-pink)] bg-pink-900/10">
+                        <div
+                            class="w-10 h-10 rounded bg-pink-500/20 text-[var(--color-pink)] flex items-center justify-center mb-2">
                             <i data-lucide="infinity"></i>
                         </div>
-                        <h4 class="font-bold text-white mb-1">Azure Pipelines</h4>
-                        <p class="text-xs text-gray-400">CI/CD: Automatisches Kompilieren, Testen und Veröffentlichen.</p>
+                        <h4 class="font-bold text-white text-sm mb-1">Azure Pipelines</h4>
+                        <p class="text-xs text-gray-400">CI/CD & Automatisierung.</p>
                     </div>
-                    <div class="glass p-5 flex flex-col items-center text-center transform transition-transform hover:-translate-y-1">
-                        <div class="w-12 h-12 rounded bg-purple-500/20 text-purple-400 flex items-center justify-center mb-3">
+                    <div class="glass p-4 flex flex-col items-center text-center">
+                        <div
+                            class="w-10 h-10 rounded bg-purple-500/20 text-purple-400 flex items-center justify-center mb-2">
                             <i data-lucide="package"></i>
                         </div>
-                        <h4 class="font-bold text-white mb-1">Azure Artifacts</h4>
-                        <p class="text-xs text-gray-400">Paketverwaltung für wiederverwendbaren Code (NuGet, npm).</p>
+                        <h4 class="font-bold text-white text-sm mb-1">Azure Artifacts</h4>
+                        <p class="text-xs text-gray-400">Paketverwaltung (NuGet, npm).</p>
                     </div>
                 </div>
 
-                <!-- Pipeline Visual -->
-                <div class="relative w-full mx-auto mt-6">
-                    <h3 class="text-center text-gray-400 mb-6 font-mono text-sm uppercase tracking-widest">Fokus: Continuous Integration & Continuous Deployment (CI/CD)</h3>
-                    
-                    <!-- Progress Line Background -->
-                    <div class="absolute top-[65%] left-10 right-10 h-2 bg-gray-800 -translate-y-1/2 rounded-full overflow-hidden">
-                        <div id="pipe-progress" class="h-full progress-gradient w-0 transition-all duration-1000 ease-in-out"></div>
+                <!-- Dual Pipelines Container -->
+                <div class="flex gap-6 w-full mt-2 h-full min-h-0">
+
+                    <!-- App Pipeline -->
+                    <div class="flex-1 glass p-5 rounded-2xl relative flex flex-col justify-between">
+                        <h4 class="text-[var(--color-cyan)] font-bold mb-4 flex items-center gap-2"><i
+                                data-lucide="smartphone" class="w-5 h-5"></i> 1. App Pipeline (CI/CD)</h4>
+                        <p class="text-xs text-gray-400 mb-6">Kompiliert, testet und veröffentlicht klassischen
+                            Software-Code (z.B. React, Java, C#).</p>
+
+                        <div class="relative w-full flex-1 flex flex-col justify-center">
+                            <div
+                                class="absolute top-[50%] left-6 right-6 h-1.5 bg-gray-800 -translate-y-1/2 rounded-full overflow-hidden">
+                                <div id="pipe-progress-app"
+                                    class="h-full bg-[var(--color-cyan)] w-0 transition-all duration-1000 ease-in-out">
+                                </div>
+                            </div>
+                            <div class="flex justify-between relative z-10">
+                                <div class="pipe-step-app glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-app-code">
+                                    <i data-lucide="file-code-2" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">1. Code</span>
+                                </div>
+                                <div class="pipe-step-app glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-app-build">
+                                    <i data-lucide="box" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">2. Build</span>
+                                </div>
+                                <div class="pipe-step-app glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-app-test">
+                                    <i data-lucide="test-tube-2" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">3. Test</span>
+                                </div>
+                                <div class="pipe-step-app glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-app-deploy">
+                                    <i data-lucide="rocket" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">4. Deploy</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex justify-between items-end">
+                            <div id="pipe-status-app" class="font-mono text-xs text-[var(--color-emerald)] h-4">Warte
+                                auf Ausführung...</div>
+                            <button onclick="runPipelineSim('app')" id="btn-pipeline-app"
+                                class="btn-primary py-2 px-4 text-sm" style="border-color: var(--color-cyan)"><i
+                                    data-lucide="play-circle" class="w-4 h-4"></i> Start</button>
+                        </div>
                     </div>
 
-                    <div class="flex justify-between relative z-10 px-10">
-                        <!-- Step 1 -->
-                        <div class="pipe-step glass w-36 h-36 flex flex-col items-center justify-center rounded-2xl bg-[#060b1a]" id="step-code">
-                            <i data-lucide="file-code-2" class="w-8 h-8 mb-3 text-gray-400"></i>
-                            <span class="font-bold text-sm">1. Checkout</span>
-                        </div>
-                        <!-- Step 2 -->
-                        <div class="pipe-step glass w-36 h-36 flex flex-col items-center justify-center rounded-2xl bg-[#060b1a]" id="step-build">
-                            <i data-lucide="box" class="w-8 h-8 mb-3 text-gray-400"></i>
-                            <span class="font-bold text-sm">2. Build</span>
-                        </div>
-                        <!-- Step 3 -->
-                        <div class="pipe-step glass w-36 h-36 flex flex-col items-center justify-center rounded-2xl bg-[#060b1a]" id="step-test">
-                            <i data-lucide="test-tube-2" class="w-8 h-8 mb-3 text-gray-400"></i>
-                            <span class="font-bold text-sm">3. Autom. Tests</span>
-                        </div>
-                        <!-- Step 4 -->
-                        <div class="pipe-step glass w-36 h-36 flex flex-col items-center justify-center rounded-2xl bg-[#060b1a]" id="step-deploy">
-                            <i data-lucide="rocket" class="w-8 h-8 mb-3 text-gray-400"></i>
-                            <span class="font-bold text-sm">4. Deployment</span>
-                        </div>
-                    </div>
-                </div>
+                    <!-- IaC Pipeline -->
+                    <div class="flex-1 glass p-5 rounded-2xl relative flex flex-col justify-between">
+                        <h4 class="text-[var(--color-purple)] font-bold mb-4 flex items-center gap-2"><i
+                                data-lucide="blocks" class="w-5 h-5"></i> 2. IaC Pipeline (Terraform)</h4>
+                        <p class="text-xs text-gray-400 mb-6">Sorgt dafür, dass Cloud-Ressourcen (Infrastruktur)
+                            automatisiert und validiert bereitgestellt werden.</p>
 
-                <div class="mt-8 text-center">
-                    <button onclick="runPipeline()" class="btn-primary px-8 py-3 text-lg" id="btn-pipeline">
-                        <i data-lucide="play-circle"></i> Pipeline Starten
-                    </button>
-                    <div id="pipe-status" class="mt-4 font-mono text-sm h-6 text-[var(--color-emerald)]">
-                        Warte auf Ausführung...
+                        <div class="relative w-full flex-1 flex flex-col justify-center">
+                            <div
+                                class="absolute top-[50%] left-6 right-6 h-1.5 bg-gray-800 -translate-y-1/2 rounded-full overflow-hidden">
+                                <div id="pipe-progress-iac"
+                                    class="h-full bg-[var(--color-purple)] w-0 transition-all duration-1000 ease-in-out">
+                                </div>
+                            </div>
+                            <div class="flex justify-between relative z-10">
+                                <div class="pipe-step-iac glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-iac-code">
+                                    <i data-lucide="file-json" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">1. TF Code</span>
+                                </div>
+                                <div class="pipe-step-iac glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-iac-init">
+                                    <i data-lucide="download-cloud" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">2. TF Init</span>
+                                </div>
+                                <div class="pipe-step-iac glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-iac-plan">
+                                    <i data-lucide="search" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">3. TF Plan</span>
+                                </div>
+                                <div class="pipe-step-iac glass w-[80px] h-[80px] flex flex-col items-center justify-center rounded-xl bg-[#060b1a]"
+                                    id="step-iac-apply">
+                                    <i data-lucide="cloud" class="w-6 h-6 mb-2 text-gray-400"></i><span
+                                        class="font-bold text-[10px]">4. TF Apply</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex justify-between items-end">
+                            <div id="pipe-status-iac" class="font-mono text-xs text-[var(--color-emerald)] h-4">Warte
+                                auf Ausführung...</div>
+                            <button onclick="runPipelineSim('iac')" id="btn-pipeline-iac"
+                                class="btn-primary py-2 px-4 text-sm"
+                                style="border-color: var(--color-purple); background: linear-gradient(130deg, rgba(139, 92, 246, 0.2), rgba(244, 63, 94, 0.2));"><i
+                                    data-lucide="play-circle" class="w-4 h-4"></i> Start</button>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
 
         <!-- Slide 6: Terraform -->
         <div class="slide" id="slide-6">
-            <header class="mb-6">
-                <div class="code-badge mb-3 text-[var(--color-purple)] border-[var(--color-purple)] bg-purple-500/10"># Lösung 3</div>
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient">IaC & Terraform: Kernkonzepte</h2>
-                <p class="text-xl mt-2">Infrastruktur als Code: Wir klicken nicht, wir schreiben Baupläne.</p>
+            <header class="mb-4">
+                <div class="code-badge mb-2 text-[var(--color-purple)] border-[var(--color-purple)] bg-purple-500/10">#
+                    Lösung 3</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gradient">IaC & Terraform: Plan & Apply</h2>
+                <p class="text-lg mt-1">Infrastruktur als Code: Wir schreiben Baupläne und prüfen sie vor der
+                    Ausführung.</p>
             </header>
 
-            <div class="flex flex-col gap-6 flex-1 pb-6">
-                
+            <div class="flex flex-col gap-4 flex-1 pb-4 min-h-0">
+
                 <!-- Theory Cards -->
                 <div class="flex gap-4">
-                    <div class="glass px-5 py-4 flex-1 border-t-2" style="border-top-color: var(--color-cyan)">
-                        <div class="font-bold text-white mb-1"><span class="text-[var(--color-cyan)] mr-2">1. Deklarativ</span> (Das "Was")</div>
-                        <p class="text-xs text-gray-400">Wir definieren nur den <i>gewünschten Zielzustand</i> (z.B. "Ich brauche 1 Datenbank"). Terraform entscheidet selbst über das "Wie" (Erstellen, Ändern oder Löschen).</p>
+                    <div class="glass px-5 py-3 flex-1 border-t-2" style="border-top-color: var(--color-cyan)">
+                        <div class="font-bold text-white mb-1"><span class="text-[var(--color-cyan)] mr-2">1.
+                                Deklarativ</span> (Das "Was")</div>
+                        <p class="text-xs text-gray-400">Wir definieren nur den <i>gewünschten Zielzustand</i>.
+                            Terraform entscheidet selbst über das "Wie" (Erstellen, Ändern oder Löschen).</p>
                     </div>
-                    <div class="glass px-5 py-4 flex-1 border-t-2" style="border-top-color: var(--color-purple)">
-                        <div class="font-bold text-white mb-1"><span class="text-[var(--color-purple)] mr-2">2. Idempotent</span> (Sicherheit)</div>
-                        <p class="text-xs text-gray-400">Das Skript kann beliebig oft ausgeführt werden. Wenn der Zielzustand bereits erreicht ist, macht Terraform einfach <i>nichts</i>. Keine doppelten Server!</p>
+                    <div class="glass px-5 py-3 flex-1 border-t-2" style="border-top-color: var(--color-purple)">
+                        <div class="font-bold text-white mb-1"><span class="text-[var(--color-purple)] mr-2">2.
+                                Idempotent</span> (Sicherheit)</div>
+                        <p class="text-xs text-gray-400">Das Skript kann beliebig oft ausgeführt werden. Wenn der
+                            Zielzustand erreicht ist, passiert nichts. Keine doppelten Server!</p>
                     </div>
-                    <div class="glass px-5 py-4 flex-1 border-t-2" style="border-top-color: var(--color-emerald)">
-                        <div class="font-bold text-white mb-1"><span class="text-[var(--color-emerald)] mr-2">3. State</span> (Das Gedächtnis)</div>
-                        <p class="text-xs text-gray-400">Terraform speichert in einem <i>State-File</i>, welche Ressourcen es in der Cloud angelegt hat. So erkennt es Abweichungen ("Drift") sofort.</p>
+                    <div class="glass px-5 py-3 flex-1 border-t-2" style="border-top-color: var(--color-emerald)">
+                        <div class="font-bold text-white mb-1"><span class="text-[var(--color-emerald)] mr-2">3.
+                                State</span> (Das Gedächtnis)</div>
+                        <p class="text-xs text-gray-400">Terraform speichert im <i>State-File</i>, welche Ressourcen in
+                            der Cloud angelegt sind. So erkennt es Abweichungen ("Drift") sofort.</p>
                     </div>
                 </div>
 
                 <!-- Code & Animation Grid -->
                 <div class="grid grid-cols-2 gap-8 flex-1 min-h-0">
-                    <!-- Left: Code Editor -->
-                    <div class="glass flex flex-col overflow-hidden h-full">
-                        <div class="bg-black/40 px-4 py-2 border-b border-gray-800 flex items-center gap-2">
-                            <div class="flex gap-2">
+                    <!-- Left: Interactive Editor & Terminal -->
+                    <div class="glass flex flex-col overflow-hidden h-full relative">
+                        <!-- Tabs -->
+                        <div class="bg-black/60 pt-2 px-4 border-b border-gray-800 flex items-end gap-1">
+                            <div class="flex gap-2 mb-2 mr-3">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-green-500"></div>
                             </div>
-                            <span class="ml-4 font-mono text-xs text-gray-400">main.tf (HCL - HashiCorp Configuration Language)</span>
+                            <button onclick="switchTfTab('code')" id="tab-code"
+                                class="px-4 py-2 bg-[#0a0a0a] text-gray-300 border-t border-l border-r border-gray-800 rounded-t-lg text-xs font-mono transition-colors">main.tf</button>
+                            <button onclick="switchTfTab('term')" id="tab-term"
+                                class="px-4 py-2 bg-transparent text-gray-500 border-t border-l border-r border-transparent rounded-t-lg text-xs font-mono hover:text-gray-300 transition-colors">Terminal</button>
                         </div>
-                        <div class="p-6 font-mono text-sm leading-relaxed text-gray-300 flex-1 overflow-auto bg-[#0a0a0a]">
-<pre><code><span class="text-gray-500 italic"># Deklaration einer Resource Group</span>
+
+                        <!-- Code View -->
+                        <div id="view-code"
+                            class="p-6 font-mono text-sm leading-relaxed text-gray-300 flex-1 overflow-auto bg-[#0a0a0a]">
+                            <pre><code><span class="text-gray-500 italic"># Deklaration einer Resource Group</span>
 <span class="text-purple-400">resource</span> <span class="text-green-400">"azurerm_resource_group"</span> <span class="text-blue-400">"rg"</span> {
   name     = <span class="text-green-300">"my-app-rg"</span>
   location = <span class="text-green-300">"West Europe"</span>
@@ -1015,11 +1281,27 @@
   resource_group_name = azurerm_resource_group.rg.name
 }</code></pre>
                         </div>
-                        <div class="p-4 border-t border-gray-800 flex justify-between items-center bg-black/40">
-                            <span class="font-mono text-xs text-gray-500">Plan validieren & ausführen</span>
-                            <button onclick="runTerraform()" id="btn-terraform" class="btn-primary py-2 text-sm" style="border-color: var(--color-purple)">
-                                <i data-lucide="terminal-square"></i> terraform apply
-                            </button>
+
+                        <!-- Terminal View (Initially hidden) -->
+                        <div id="view-term"
+                            class="p-6 font-mono text-sm leading-relaxed text-gray-300 flex-1 overflow-auto bg-[#0a0a0a] hidden">
+                            <span class="text-gray-500">Warte auf Terraform Kommandos...</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="p-4 border-t border-gray-800 flex justify-between items-center bg-black/60">
+                            <span class="font-mono text-xs text-gray-500">Immer zuerst Planen, dann Anwenden.</span>
+                            <div class="flex gap-3">
+                                <button onclick="runTerraformPlan()" id="btn-tf-plan" class="btn-primary py-2 text-sm"
+                                    style="border-color: var(--color-cyan)">
+                                    <i data-lucide="search" class="w-4 h-4"></i> terraform plan
+                                </button>
+                                <button onclick="runTerraformApply()" id="btn-tf-apply"
+                                    class="btn-primary py-2 text-sm opacity-50 pointer-events-none"
+                                    style="border-color: var(--color-purple)">
+                                    <i data-lucide="play" class="w-4 h-4"></i> terraform apply
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -1027,14 +1309,20 @@
                     <div class="glass relative flex flex-col p-6 h-full">
                         <div class="flex justify-between items-center mb-4">
                             <h3 class="text-lg font-bold text-[var(--color-cyan)]">Azure Cloud Umgebung</h3>
-                            <div class="px-2 py-1 rounded bg-gray-800 text-xs font-mono text-gray-400 border border-gray-700">terraform.tfstate</div>
+                            <div
+                                class="px-2 py-1 rounded bg-gray-800 text-xs font-mono text-gray-400 border border-gray-700">
+                                terraform.tfstate</div>
                         </div>
-                        
-                        <div class="flex-1 border-2 border-dashed border-gray-700 rounded-xl relative p-6 bg-blue-900/10 flex flex-col items-center justify-center gap-6 overflow-hidden" id="cloud-canvas">
-                            <p class="text-gray-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center" id="cloud-empty-text">Keine Ressourcen vorhanden<br><span class="text-xs">Warte auf Terraform...</span></p>
-                            
+
+                        <div class="flex-1 border-2 border-dashed border-gray-700 rounded-xl relative p-6 bg-blue-900/10 flex flex-col items-center justify-center gap-6 overflow-hidden"
+                            id="cloud-canvas">
+                            <p class="text-gray-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
+                                id="cloud-empty-text">Keine Ressourcen vorhanden<br><span class="text-xs">Warte auf
+                                    Terraform Apply...</span></p>
+
                             <!-- These will be animated in via JS -->
-                            <div class="infra-block hidden w-full glass bg-gray-900/80 p-4 border-[var(--color-purple)]" id="infra-rg">
+                            <div class="infra-block hidden w-full glass bg-gray-900/80 p-4 border-[var(--color-purple)]"
+                                id="infra-rg">
                                 <div class="flex items-center gap-3">
                                     <i data-lucide="folder-kanban" class="text-[var(--color-purple)]"></i>
                                     <div>
@@ -1045,7 +1333,8 @@
                             </div>
 
                             <div class="flex gap-4 w-full justify-center">
-                                <div class="infra-block hidden flex-1 glass bg-gray-900/80 p-4 border-[var(--color-cyan)]" id="infra-web">
+                                <div class="infra-block hidden flex-1 glass bg-gray-900/80 p-4 border-[var(--color-cyan)]"
+                                    id="infra-web">
                                     <div class="flex flex-col items-center gap-2 text-center">
                                         <i data-lucide="globe" class="text-[var(--color-cyan)] w-8 h-8"></i>
                                         <div class="font-bold text-sm">App Service</div>
@@ -1053,7 +1342,8 @@
                                     </div>
                                 </div>
 
-                                <div class="infra-block hidden flex-1 glass bg-gray-900/80 p-4 border-[var(--color-emerald)]" id="infra-db">
+                                <div class="infra-block hidden flex-1 glass bg-gray-900/80 p-4 border-[var(--color-emerald)]"
+                                    id="infra-db">
                                     <div class="flex flex-col items-center gap-2 text-center">
                                         <i data-lucide="database" class="text-[var(--color-emerald)] w-8 h-8"></i>
                                         <div class="font-bold text-sm">SQL Database</div>
@@ -1077,8 +1367,9 @@
 
             <div class="flex-1 relative flex items-center justify-center p-8 mt-16 w-full">
                 <!-- Exact 900x600 grid for perfect spacing -->
-                <div class="relative w-[900px] h-[600px] flex items-center justify-center scale-90 lg:scale-100 xl:scale-110 transform-origin-center">
-                    
+                <div
+                    class="relative w-[900px] h-[600px] flex items-center justify-center scale-90 lg:scale-100 xl:scale-110 transform-origin-center">
+
                     <!-- Solid Gradient Flow Arrows -->
                     <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 900 600">
                         <defs>
@@ -1094,7 +1385,7 @@
                             <marker id="arrow-cyan" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
                                 <polygon points="0 0, 8 3, 0 6" fill="var(--color-cyan)" />
                             </marker>
-                            
+
                             <linearGradient id="grad-top-right" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="var(--color-cyan)" />
                                 <stop offset="100%" stop-color="var(--color-pink)" />
@@ -1112,69 +1403,94 @@
                                 <stop offset="100%" stop-color="var(--color-cyan)" />
                             </linearGradient>
                         </defs>
-                        
+
                         <!-- Smooth Bezier curves between the four nodes avoiding the boxes -->
-                        <path d="M 610 100 Q 756 100 756 210" fill="none" stroke="url(#grad-top-right)" stroke-width="5" marker-end="url(#arrow-pink)" class="drop-shadow-[0_0_10px_rgba(244,63,94,0.3)]"/>
-                        <path d="M 756 390 Q 756 507 610 507" fill="none" stroke="url(#grad-right-bottom)" stroke-width="5" marker-end="url(#arrow-purple)" class="drop-shadow-[0_0_10px_rgba(139,92,246,0.3)]"/>
-                        <path d="M 290 507 Q 144 507 144 390" fill="none" stroke="url(#grad-bottom-left)" stroke-width="5" marker-end="url(#arrow-emerald)" class="drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]"/>
-                        <path d="M 144 210 Q 144 100 290 100" fill="none" stroke="url(#grad-left-top)" stroke-width="5" marker-end="url(#arrow-cyan)" class="drop-shadow-[0_0_10px_rgba(14,165,233,0.3)]"/>
+                        <path d="M 610 100 Q 756 100 756 210" fill="none" stroke="url(#grad-top-right)" stroke-width="5"
+                            marker-end="url(#arrow-pink)" class="drop-shadow-[0_0_10px_rgba(244,63,94,0.3)]" />
+                        <path d="M 756 390 Q 756 507 610 507" fill="none" stroke="url(#grad-right-bottom)"
+                            stroke-width="5" marker-end="url(#arrow-purple)"
+                            class="drop-shadow-[0_0_10px_rgba(139,92,246,0.3)]" />
+                        <path d="M 290 507 Q 144 507 144 390" fill="none" stroke="url(#grad-bottom-left)"
+                            stroke-width="5" marker-end="url(#arrow-emerald)"
+                            class="drop-shadow-[0_0_10px_rgba(16,185,129,0.3)]" />
+                        <path d="M 144 210 Q 144 100 290 100" fill="none" stroke="url(#grad-left-top)" stroke-width="5"
+                            marker-end="url(#arrow-cyan)" class="drop-shadow-[0_0_10px_rgba(14,165,233,0.3)]" />
                     </svg>
 
                     <!-- Center Concept Orchestrator -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
-                        <div class="glass p-6 rounded-full w-32 h-32 flex items-center justify-center border-[var(--color-gold)] shadow-[0_0_40px_rgba(245,158,11,0.25)] floating mb-4">
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+                        <div
+                            class="glass p-6 rounded-full w-32 h-32 flex items-center justify-center border-[var(--color-gold)] shadow-[0_0_40px_rgba(245,158,11,0.25)] floating mb-4">
                             <i data-lucide="settings-2" class="w-16 h-16 text-[var(--color-gold)]"></i>
                         </div>
-                        <div class="text-[var(--color-gold)] font-bold uppercase tracking-wider text-xs bg-black/60 px-5 py-2 rounded-full border border-yellow-500/40 backdrop-blur whitespace-nowrap shadow-lg">
+                        <div
+                            class="text-[var(--color-gold)] font-bold uppercase tracking-wider text-xs bg-black/60 px-5 py-2 rounded-full border border-yellow-500/40 backdrop-blur whitespace-nowrap shadow-lg">
                             Azure Pipeline Orchestration
                         </div>
                     </div>
 
                     <!-- 1. Entwickler (12 o'clock) -->
                     <div class="absolute z-10 top-[2%] left-1/2 -translate-x-1/2">
-                        <div class="glass p-6 rounded-xl border-[var(--color-cyan)] border-t-4 w-72 text-left shadow-2xl relative">
-                            <div class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-cyan)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-cyan)] text-lg">1</div>
+                        <div
+                            class="glass p-6 rounded-xl border-[var(--color-cyan)] border-t-4 w-72 text-left shadow-2xl relative">
+                            <div
+                                class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-cyan)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-cyan)] text-lg">
+                                1</div>
                             <div class="flex items-center gap-4 mb-3">
                                 <i data-lucide="users" class="w-10 h-10 text-[var(--color-cyan)]"></i>
                                 <h4 class="font-bold text-xl text-white">Entwickler</h4>
                             </div>
-                            <p class="text-sm text-gray-300 leading-relaxed">Schreibt App-Code & IaC-Bauplan. Pushed den Code sicher in einen Git-Branch.</p>
+                            <p class="text-sm text-gray-300 leading-relaxed">Schreibt App-Code & IaC-Bauplan. Pushed den
+                                Code sicher in einen Git-Branch.</p>
                         </div>
                     </div>
 
                     <!-- 2. Azure DevOps (3 o'clock) -->
                     <div class="absolute z-10 top-1/2 right-0 -translate-y-1/2">
-                        <div class="glass p-6 rounded-xl border-[var(--color-pink)] border-t-4 w-72 text-left shadow-2xl relative">
-                            <div class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-pink)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-pink)] text-lg">2</div>
+                        <div
+                            class="glass p-6 rounded-xl border-[var(--color-pink)] border-t-4 w-72 text-left shadow-2xl relative">
+                            <div
+                                class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-pink)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-pink)] text-lg">
+                                2</div>
                             <div class="flex items-center gap-4 mb-3">
                                 <i data-lucide="infinity" class="w-10 h-10 text-[var(--color-pink)]"></i>
                                 <h4 class="font-bold text-xl text-white">Azure DevOps</h4>
                             </div>
-                            <p class="text-sm text-gray-300 leading-relaxed">Erkennt den Commit automatisch, testet den Code und startet die CI/CD Pipeline.</p>
+                            <p class="text-sm text-gray-300 leading-relaxed">Erkennt den Commit automatisch, testet den
+                                Code und startet die CI/CD Pipeline.</p>
                         </div>
                     </div>
 
                     <!-- 3. Terraform (6 o'clock) -->
                     <div class="absolute z-10 bottom-[2%] left-1/2 -translate-x-1/2">
-                        <div class="glass p-6 rounded-xl border-[var(--color-purple)] border-t-4 w-72 text-left shadow-2xl relative">
-                            <div class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-purple)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-purple)] text-lg">3</div>
+                        <div
+                            class="glass p-6 rounded-xl border-[var(--color-purple)] border-t-4 w-72 text-left shadow-2xl relative">
+                            <div
+                                class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-purple)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-purple)] text-lg">
+                                3</div>
                             <div class="flex items-center gap-4 mb-3">
                                 <i data-lucide="terminal" class="w-10 h-10 text-[var(--color-purple)]"></i>
                                 <h4 class="font-bold text-xl text-white">Terraform</h4>
                             </div>
-                            <p class="text-sm text-gray-300 leading-relaxed">Die Pipeline übergibt den IaC-Bauplan zur sicheren Validierung an Terraform.</p>
+                            <p class="text-sm text-gray-300 leading-relaxed">Die Pipeline übergibt den IaC-Bauplan zur
+                                sicheren Validierung an Terraform.</p>
                         </div>
                     </div>
 
                     <!-- 4. Azure Cloud (9 o'clock) -->
                     <div class="absolute z-10 top-1/2 left-0 -translate-y-1/2">
-                        <div class="glass p-6 rounded-xl border-[var(--color-emerald)] border-t-4 w-72 text-left shadow-2xl relative">
-                            <div class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-emerald)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-emerald)] text-lg">4</div>
+                        <div
+                            class="glass p-6 rounded-xl border-[var(--color-emerald)] border-t-4 w-72 text-left shadow-2xl relative">
+                            <div
+                                class="absolute -top-4 -left-4 w-9 h-9 rounded-full bg-[var(--color-emerald)] text-white font-bold flex items-center justify-center shadow-[0_0_15px_var(--color-emerald)] text-lg">
+                                4</div>
                             <div class="flex items-center gap-4 mb-3">
                                 <i data-lucide="cloud" class="w-10 h-10 text-[var(--color-emerald)]"></i>
                                 <h4 class="font-bold text-xl text-white">Azure Cloud</h4>
                             </div>
-                            <p class="text-sm text-gray-300 leading-relaxed">Terraform baut die berechnete Infrastruktur vollautomatisch und fehlerfrei auf.</p>
+                            <p class="text-sm text-gray-300 leading-relaxed">Terraform baut die berechnete Infrastruktur
+                                vollautomatisch und fehlerfrei auf.</p>
                         </div>
                     </div>
 
@@ -1186,48 +1502,59 @@
         <div class="slide" id="slide-8">
             <header class="mb-10">
                 <h2 class="text-4xl md:text-5xl font-bold text-gradient text-center">Skills & Ressourcen</h2>
-                <p class="text-xl mt-2 text-center text-gray-300">Wie man DevOps und IaC erfolgreich in der Praxis anwendet.</p>
+                <p class="text-xl mt-2 text-center text-gray-300">Wie man DevOps und IaC erfolgreich in der Praxis
+                    anwendet.</p>
             </header>
 
             <div class="flex-1 flex items-center justify-center w-full">
                 <div class="grid grid-cols-2 gap-12 max-w-6xl w-full">
-                    
+
                     <!-- Left: Skills -->
                     <div class="flex flex-col gap-5">
                         <div class="flex items-center gap-3 mb-2">
-                            <div class="p-2 rounded bg-purple-500/20"><i data-lucide="brain-circuit" class="w-6 h-6 text-[var(--color-purple)]"></i></div>
+                            <div class="p-2 rounded bg-purple-500/20"><i data-lucide="brain-circuit"
+                                    class="w-6 h-6 text-[var(--color-purple)]"></i></div>
                             <h3 class="text-2xl font-bold text-white">Das DevOps Skillset</h3>
                         </div>
-                        
-                        <div class="glass p-5 rounded-xl border-l-2 border-[var(--color-cyan)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+
+                        <div
+                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-cyan)] flex items-start gap-4 hover:bg-white/5 transition-colors">
                             <i data-lucide="git-merge" class="w-8 h-8 text-[var(--color-cyan)] mt-1 flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-white text-lg mb-1">Git & Versionskontrolle</h4>
-                                <p class="text-sm text-gray-400">Branching-Strategien, Pull Requests, Merge-Konfliktlösung und Team-Kollaboration.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="glass p-5 rounded-xl border-l-2 border-[var(--color-pink)] flex items-start gap-4 hover:bg-white/5 transition-colors">
-                            <i data-lucide="infinity" class="w-8 h-8 text-[var(--color-pink)] mt-1 flex-shrink-0"></i>
-                            <div>
-                                <h4 class="font-bold text-white text-lg mb-1">CI/CD Pipelines</h4>
-                                <p class="text-sm text-gray-400">YAML-Syntax verstehen, automatisiertes Testing und Build-Prozesse (z.B. GitHub Actions).</p>
-                            </div>
-                        </div>
-                        
-                        <div class="glass p-5 rounded-xl border-l-2 border-[var(--color-gold)] flex items-start gap-4 hover:bg-white/5 transition-colors">
-                            <i data-lucide="terminal-square" class="w-8 h-8 text-[var(--color-gold)] mt-1 flex-shrink-0"></i>
-                            <div>
-                                <h4 class="font-bold text-white text-lg mb-1">Scripting & OS</h4>
-                                <p class="text-sm text-gray-400">Kommandozeile (Bash/Linux), PowerShell oder Python zur Task-Automatisierung.</p>
+                                <p class="text-sm text-gray-400">Branching-Strategien, Pull Requests,
+                                    Merge-Konfliktlösung und Team-Kollaboration.</p>
                             </div>
                         </div>
 
-                        <div class="glass p-5 rounded-xl border-l-2 border-[var(--color-emerald)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+                        <div
+                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-pink)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+                            <i data-lucide="infinity" class="w-8 h-8 text-[var(--color-pink)] mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg mb-1">CI/CD Pipelines</h4>
+                                <p class="text-sm text-gray-400">YAML-Syntax verstehen, automatisiertes Testing und
+                                    Build-Prozesse (z.B. GitHub Actions).</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-gold)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+                            <i data-lucide="terminal-square"
+                                class="w-8 h-8 text-[var(--color-gold)] mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg mb-1">Scripting & OS</h4>
+                                <p class="text-sm text-gray-400">Kommandozeile (Bash/Linux), PowerShell oder Python zur
+                                    Task-Automatisierung.</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-emerald)] flex items-start gap-4 hover:bg-white/5 transition-colors">
                             <i data-lucide="blocks" class="w-8 h-8 text-[var(--color-emerald)] mt-1 flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-white text-lg mb-1">Cloud & IaC (Terraform)</h4>
-                                <p class="text-sm text-gray-400">HCL (HashiCorp Configuration Language), State-Management und Cloud-Konzepte.</p>
+                                <p class="text-sm text-gray-400">HCL (HashiCorp Configuration Language),
+                                    State-Management und Cloud-Konzepte.</p>
                             </div>
                         </div>
                     </div>
@@ -1235,46 +1562,63 @@
                     <!-- Right: Resources -->
                     <div class="flex flex-col gap-5">
                         <div class="flex items-center gap-3 mb-2">
-                            <div class="p-2 rounded bg-cyan-500/20"><i data-lucide="book-open" class="w-6 h-6 text-[var(--color-cyan)]"></i></div>
+                            <div class="p-2 rounded bg-cyan-500/20"><i data-lucide="book-open"
+                                    class="w-6 h-6 text-[var(--color-cyan)]"></i></div>
                             <h3 class="text-2xl font-bold text-white">Lernressourcen</h3>
                         </div>
 
-                        <a href="https://learn.microsoft.com/de-de/azure/devops/" target="_blank" class="glass p-5 rounded-xl hover:border-blue-400 transition-all flex items-center justify-between group cursor-pointer">
+                        <a href="https://learn.microsoft.com/de-de/azure/devops/" target="_blank"
+                            class="glass p-5 rounded-xl hover:border-blue-400 transition-all flex items-center justify-between group cursor-pointer">
                             <div class="flex items-center gap-4">
                                 <i class="devicon-azure-plain colored text-4xl"></i>
                                 <div>
-                                    <h4 class="font-bold text-white text-lg group-hover:text-blue-400 transition-colors">Microsoft Learn</h4>
-                                    <p class="text-sm text-gray-400">Kostenlose Azure DevOps & Cloud Lernpfade und interaktive Sandbox-Umgebungen.</p>
+                                    <h4
+                                        class="font-bold text-white text-lg group-hover:text-blue-400 transition-colors">
+                                        Microsoft Learn</h4>
+                                    <p class="text-sm text-gray-400">Kostenlose Azure DevOps & Cloud Lernpfade und
+                                        interaktive Sandbox-Umgebungen.</p>
                                 </div>
                             </div>
                             <i data-lucide="external-link" class="w-5 h-5 text-gray-500 group-hover:text-blue-400"></i>
                         </a>
 
-                        <a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank" class="glass p-5 rounded-xl hover:border-purple-400 transition-all flex items-center justify-between group cursor-pointer">
+                        <a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank"
+                            class="glass p-5 rounded-xl hover:border-purple-400 transition-all flex items-center justify-between group cursor-pointer">
                             <div class="flex items-center gap-4">
                                 <i class="devicon-terraform-plain colored text-4xl"></i>
                                 <div>
-                                    <h4 class="font-bold text-white text-lg group-hover:text-purple-400 transition-colors">HashiCorp Tutorials</h4>
-                                    <p class="text-sm text-gray-400">Offizielle Hands-on Labs für Terraform (HCL Syntax, Modules, State-Management).</p>
+                                    <h4
+                                        class="font-bold text-white text-lg group-hover:text-purple-400 transition-colors">
+                                        HashiCorp Tutorials</h4>
+                                    <p class="text-sm text-gray-400">Offizielle Hands-on Labs für Terraform (HCL Syntax,
+                                        Modules, State-Management).</p>
                                 </div>
                             </div>
-                            <i data-lucide="external-link" class="w-5 h-5 text-gray-500 group-hover:text-purple-400"></i>
+                            <i data-lucide="external-link"
+                                class="w-5 h-5 text-gray-500 group-hover:text-purple-400"></i>
                         </a>
 
-                        <a href="https://github.com" target="_blank" class="glass p-5 rounded-xl hover:border-white transition-all flex items-center justify-between group cursor-pointer">
+                        <a href="https://github.com" target="_blank"
+                            class="glass p-5 rounded-xl hover:border-white transition-all flex items-center justify-between group cursor-pointer">
                             <div class="flex items-center gap-4">
                                 <i class="devicon-github-original text-white text-4xl"></i>
                                 <div>
-                                    <h4 class="font-bold text-white text-lg group-hover:text-gray-200 transition-colors">GitHub Sandbox</h4>
-                                    <p class="text-sm text-gray-400">Einfach machen! Erstelle ein leeres Repo und versuche, eine GitHub Action zu bauen.</p>
+                                    <h4
+                                        class="font-bold text-white text-lg group-hover:text-gray-200 transition-colors">
+                                        GitHub Sandbox</h4>
+                                    <p class="text-sm text-gray-400">Einfach machen! Erstelle ein leeres Repo und
+                                        versuche, eine GitHub Action zu bauen.</p>
                                 </div>
                             </div>
                             <i data-lucide="external-link" class="w-5 h-5 text-gray-500 group-hover:text-white"></i>
                         </a>
-                        
-                        <div class="mt-4 p-6 rounded-xl border border-gray-700 bg-gray-900/50 flex flex-col items-center text-center">
-                            <i data-lucide="lightbulb" class="w-8 h-8 text-yellow-400 mb-3 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]"></i>
-                            <p class="text-gray-300 italic text-lg">"Der beste Weg, DevOps zu lernen, ist, sein eigenes kleines Projekt komplett zu automatisieren."</p>
+
+                        <div
+                            class="mt-4 p-6 rounded-xl border border-gray-700 bg-gray-900/50 flex flex-col items-center text-center">
+                            <i data-lucide="lightbulb"
+                                class="w-8 h-8 text-yellow-400 mb-3 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]"></i>
+                            <p class="text-gray-300 italic text-lg">"Der beste Weg, DevOps zu lernen, ist, sein eigenes
+                                kleines Projekt komplett zu automatisieren."</p>
                         </div>
                     </div>
                 </div>
@@ -1289,65 +1633,80 @@
             </header>
 
             <div class="grid grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
-                
+
                 <!-- Git -->
-                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1" style="border-color: rgba(14, 165, 233, 0.3)">
+                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1"
+                    style="border-color: rgba(14, 165, 233, 0.3)">
                     <div class="flex items-center gap-4 mb-3">
                         <div class="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center">
                             <i data-lucide="shield-check" class="w-6 h-6 text-[var(--color-cyan)]"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white">Git & Versionierung</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">Keine Angst mehr vor Fehlern durch isoliertes Arbeiten in Branches und lückenlose Versionskontrolle.</p>
+                    <p class="text-gray-400 text-sm">Keine Angst mehr vor Fehlern durch isoliertes Arbeiten in Branches
+                        und lückenlose Versionskontrolle.</p>
                 </div>
 
                 <!-- DevOps & Pipelines -->
-                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1" style="border-color: rgba(244, 63, 94, 0.3)">
+                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1"
+                    style="border-color: rgba(244, 63, 94, 0.3)">
                     <div class="flex items-center gap-4 mb-3">
                         <div class="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center">
                             <i data-lucide="zap" class="w-6 h-6 text-[var(--color-pink)]"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white">DevOps & Pipelines</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">Sicherheit & Tempo. Wir automatisieren fehleranfällige Handarbeit und verbinden Development nahtlos mit Operations.</p>
+                    <p class="text-gray-400 text-sm">Sicherheit & Tempo. Wir automatisieren fehleranfällige Handarbeit
+                        und verbinden Development nahtlos mit Operations.</p>
                 </div>
 
                 <!-- IaC -->
-                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1" style="border-color: rgba(139, 92, 246, 0.3)">
+                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1"
+                    style="border-color: rgba(139, 92, 246, 0.3)">
                     <div class="flex items-center gap-4 mb-3">
                         <div class="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center">
                             <i data-lucide="copy" class="w-6 h-6 text-[var(--color-purple)]"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white">IaC (Terraform)</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">Infrastruktur wird programmierbar, idempotent und reproduzierbar. Nachvollziehbare Baupläne statt Klicks im Portal.</p>
+                    <p class="text-gray-400 text-sm">Infrastruktur wird programmierbar, idempotent und reproduzierbar.
+                        Nachvollziehbare Baupläne statt Klicks im Portal.</p>
                 </div>
 
                 <!-- NEW: Skillset -->
-                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1" style="border-color: rgba(245, 158, 11, 0.3)">
+                <div class="glass p-6 text-left flex flex-col items-start transform transition-transform hover:-translate-y-1"
+                    style="border-color: rgba(245, 158, 11, 0.3)">
                     <div class="flex items-center gap-4 mb-3">
                         <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center">
                             <i data-lucide="brain-circuit" class="w-6 h-6 text-[var(--color-gold)]"></i>
                         </div>
                         <h3 class="text-xl font-bold text-white">Das neue Skillset</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">DevOps erfordert Umdenken: Skripting, Cloud-Wissen und Git-Workflows verschmelzen. Kontinuierliches "Hands-on" Lernen ist der Schlüssel.</p>
+                    <p class="text-gray-400 text-sm">DevOps erfordert Umdenken: Skripting, Cloud-Wissen und
+                        Git-Workflows verschmelzen. Kontinuierliches "Hands-on" Lernen ist der Schlüssel.</p>
                 </div>
 
             </div>
 
             <div class="text-center mt-auto pb-8">
-                <div class="glass inline-flex items-center gap-6 px-10 py-6 rounded-2xl" style="border-color: rgba(8, 204, 171, 0.4); background: rgba(8, 204, 171, 0.05);">
+                <div class="glass inline-flex items-center gap-6 px-10 py-6 rounded-2xl"
+                    style="border-color: rgba(8, 204, 171, 0.4); background: rgba(8, 204, 171, 0.05);">
                     <div class="text-left">
-                        <img src="187x50-inverted (1).png" alt="vision&" class="h-8 mb-2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div style="display:none; font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 2rem; color: white; margin-bottom: 0.5rem; letter-spacing: 1px;">vision<span style="color: var(--color-vision);">&amp;</span></div>
+                        <img src="187x50-inverted (1).png" alt="vision&" class="h-8 mb-2"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div
+                            style="display:none; font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 2rem; color: white; margin-bottom: 0.5rem; letter-spacing: 1px;">
+                            vision<span style="color: var(--color-vision);">&amp;</span></div>
                         <div class="text-xl font-light text-white">Your business, simply brilliant.</div>
                     </div>
                     <div class="h-10 w-px bg-gray-700"></div>
                     <div class="flex gap-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="globe"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="mail"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="phone"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
+                                data-lucide="globe"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
+                                data-lucide="mail"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
+                                data-lucide="phone"></i></a>
                     </div>
                 </div>
             </div>
@@ -1380,7 +1739,7 @@
             document.querySelectorAll('.slide').forEach((slide, index) => {
                 slide.classList.toggle('active', index === currentSlide);
             });
-            
+
             // Trigger Git Sim drawing if we hit the slide
             if (currentSlide === 2) {
                 setTimeout(() => gitSim.drawVisiblePaths(), 100);
@@ -1417,14 +1776,14 @@
         // --- Interactive: Slide 1 (Chaos) ---
         const btnChaos = document.getElementById('btn-chaos');
         const chaosContainer = document.getElementById('chaos-errors');
-        
+
         btnChaos.addEventListener('click', () => {
             const errors = [
                 "Server Crash!", "Port 80 belegt!", "DB Timeout", "Version Mismatch",
                 "App_Final_v3 missing", "Oops...", "Credentials invalid", "500 Internal Error"
             ];
-            
-            for(let i = 0; i < 5; i++) {
+
+            for (let i = 0; i < 5; i++) {
                 setTimeout(() => {
                     const el = document.createElement('div');
                     el.className = 'absolute bg-red-600 text-white px-3 py-1 rounded border border-red-400 font-mono text-sm shadow-lg whitespace-nowrap z-50 transition-all duration-1000';
@@ -1432,20 +1791,20 @@
                     el.style.left = Math.random() * 80 + '%';
                     el.style.top = Math.random() * 80 + '%';
                     el.style.transform = 'scale(0) rotate(' + (Math.random() * 40 - 20) + 'deg)';
-                    
+
                     chaosContainer.appendChild(el);
-                    
+
                     // Animate in
                     requestAnimationFrame(() => {
                         el.style.transform = 'scale(1.2) rotate(' + (Math.random() * 40 - 20) + 'deg)';
                     });
-                    
+
                     // Remove after a while
                     setTimeout(() => {
                         el.style.opacity = '0';
                         setTimeout(() => el.remove(), 1000);
                     }, 2000);
-                    
+
                 }, i * 150);
             }
         });
@@ -1458,29 +1817,29 @@
             textEl: document.getElementById('git-step-text'),
             counterEl: document.getElementById('git-step-counter'),
             btnNext: document.getElementById('btn-git-next'),
-            
+
             // X points on a % scale (0 to 7 mapping nicely across the box)
             xScale: (col) => 5 + (col * 12.5),
             yScale: (row) => 15 + (row * 25), // 0:15%, 1:40%, 2:65%, 3:90%
 
             nodes: {
-                m1:  { id: 'm1', col: 0, row: 0, color: 'bg-pink-500', step: 0 },
-                d1:  { id: 'd1', col: 1, row: 1, color: 'bg-green-400', step: 1 },
-                m2:  { id: 'm2', col: 2, row: 0, color: 'bg-pink-500', step: 2 },
+                m1: { id: 'm1', col: 0, row: 0, color: 'bg-pink-500', step: 0 },
+                d1: { id: 'd1', col: 1, row: 1, color: 'bg-green-400', step: 1 },
+                m2: { id: 'm2', col: 2, row: 0, color: 'bg-pink-500', step: 2 },
                 fa1: { id: 'fa1', col: 2, row: 2, color: 'bg-blue-400', step: 3 },
                 fa2: { id: 'fa2', col: 3, row: 2, color: 'bg-blue-400', step: 4 },
                 bb1: { id: 'bb1', col: 3, row: 3, color: 'bg-yellow-400', step: 5 },
-                d2:  { id: 'd2', col: 4, row: 1, color: 'bg-green-400', step: 6 },
+                d2: { id: 'd2', col: 4, row: 1, color: 'bg-green-400', step: 6 },
                 bb2: { id: 'bb2', col: 5, row: 3, color: 'bg-yellow-400', step: 7 },
-                d3:  { id: 'd3', col: 6, row: 1, color: 'bg-green-400', step: 8 },
-                m3:  { id: 'm3', col: 7, row: 0, color: 'bg-pink-500', step: 9 },
+                d3: { id: 'd3', col: 6, row: 1, color: 'bg-green-400', step: 8 },
+                m3: { id: 'm3', col: 7, row: 0, color: 'bg-pink-500', step: 9 },
             },
 
             lines: [
                 // Background tracking lines (shown early)
                 { id: 'trk-m', from: 'm1', to: 'm3', type: 'track', row: 0, step: 0 },
                 { id: 'trk-d', from: 'd1', to: 'd3', type: 'track', row: 1, step: 1 },
-                
+
                 // Actual node connections
                 { id: 'l1', from: 'm1', to: 'd1', color: 'var(--git-dev)', step: 1, curve: true },
                 { id: 'l2', from: 'm1', to: 'm2', color: 'var(--git-main)', step: 2 },
@@ -1513,7 +1872,7 @@
                 // Clear existing
                 this.svg.innerHTML = '';
                 document.querySelectorAll('.git-node').forEach(e => e.remove());
-                
+
                 // Draw Nodes
                 Object.values(this.nodes).forEach(n => {
                     const el = document.createElement('div');
@@ -1530,7 +1889,7 @@
                     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                     path.id = `git-line-${l.id}`;
                     path.dataset.step = l.step;
-                    
+
                     if (l.type === 'track') {
                         path.setAttribute('class', 'git-track');
                     } else {
@@ -1545,12 +1904,12 @@
 
             drawVisiblePaths() {
                 const rect = this.container.getBoundingClientRect();
-                if(rect.width === 0) return; // Not visible yet
+                if (rect.width === 0) return; // Not visible yet
 
                 this.lines.forEach(l => {
                     const fromN = this.nodes[l.from];
                     const toN = this.nodes[l.to];
-                    
+
                     const x1 = (this.xScale(fromN.col) / 100) * rect.width;
                     const y1 = (this.yScale(fromN.row) / 100) * rect.height;
                     const x2 = (this.xScale(toN.col) / 100) * rect.width;
@@ -1571,9 +1930,9 @@
                         // Straight colored line
                         d = `M ${x1} ${y1} L ${x2} ${y2}`;
                     }
-                    
+
                     path.setAttribute('d', d);
-                    
+
                     // Set stroke length for animation if not a track
                     if (l.type !== 'track') {
                         const len = path.getTotalLength();
@@ -1611,7 +1970,7 @@
                     if (step <= this.currentStep) el.classList.add('visible');
                     else el.classList.remove('visible');
                 });
-                
+
                 document.querySelectorAll('.git-track').forEach(el => {
                     const step = parseInt(el.dataset.step);
                     if (step <= this.currentStep) el.classList.add('visible');
@@ -1642,7 +2001,7 @@
 
         // Initialize Git Sim when DOM is ready
         setTimeout(() => gitSim.init(), 100);
-        window.addEventListener('resize', () => { if(currentSlide === 2) gitSim.drawVisiblePaths(); });
+        window.addEventListener('resize', () => { if (currentSlide === 2) gitSim.drawVisiblePaths(); });
 
 
         // --- Interactive: Slide 3 (What is DevOps?) ---
@@ -1654,18 +2013,18 @@
             const infinityDiagram = document.getElementById('devops-infinity-diagram');
             const benefits = document.getElementById('devops-benefits');
             const btn = document.getElementById('btn-unite');
-            
+
             // Break the wall
             wall.style.transform = 'scaleY(0)';
             wall.style.opacity = '0';
-            
+
             setTimeout(() => {
                 wall.style.display = 'none';
-                
+
                 // Move boxes closer together
                 dev.style.transform = 'translateX(50px)';
                 ops.style.transform = 'translateX(-50px)';
-                
+
                 setTimeout(() => {
                     // Fade out old entities
                     entities.style.opacity = '0';
@@ -1677,15 +2036,15 @@
                         // Show infinity loop graphic
                         infinityDiagram.classList.remove('opacity-0', 'pointer-events-none', 'scale-90');
                         infinityDiagram.classList.add('opacity-100', 'scale-100');
-                        
+
                         // Light up benefits
                         benefits.style.opacity = '1';
                         benefits.style.filter = 'grayscale(0%)';
-                        
+
                         btn.innerHTML = '<i data-lucide="check-circle"></i> DevOps Kultur etabliert';
                         btn.classList.replace('text-white', 'text-[var(--color-emerald)]');
                         lucide.createIcons();
-                        
+
                         // Disable button
                         btn.classList.add('pointer-events-none');
                     }, 500);
@@ -1693,19 +2052,24 @@
             }, 500);
         }
 
-        // --- Interactive: Slide 5 (Pipeline) ---
-        let isPipelineRunning = false;
-        function runPipeline() {
-            if (isPipelineRunning) return;
-            isPipelineRunning = true;
-            
-            const btn = document.getElementById('btn-pipeline');
-            const status = document.getElementById('pipe-status');
-            const progress = document.getElementById('pipe-progress');
-            
-            // Reset
+        // --- Interactive: Slide 5 (Dual Pipelines) ---
+        let isAppPipeRunning = false;
+        let isIacPipeRunning = false;
+
+        function runPipelineSim(type) {
+            if (type === 'app' && isAppPipeRunning) return;
+            if (type === 'iac' && isIacPipeRunning) return;
+
+            if (type === 'app') isAppPipeRunning = true;
+            if (type === 'iac') isIacPipeRunning = true;
+
+            const btn = document.getElementById(`btn-pipeline-${type}`);
+            const status = document.getElementById(`pipe-status-${type}`);
+            const progress = document.getElementById(`pipe-progress-${type}`);
+
+            // Reset visual state
             progress.style.width = '0%';
-            document.querySelectorAll('.pipe-step').forEach(el => {
+            document.querySelectorAll(`.pipe-step-${type}`).forEach(el => {
                 el.classList.remove('active', 'done');
                 const icon = el.querySelector('svg, i');
                 if (icon) {
@@ -1713,30 +2077,40 @@
                     icon.classList.add('text-gray-400');
                 }
             });
-            
-            btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Läuft...';
+
+            btn.innerHTML = '<i data-lucide="loader" class="animate-spin w-4 h-4"></i> Läuft...';
             lucide.createIcons();
-            
-            const steps = [
-                { id: 'code', text: 'Checkout aus Git Repository...', time: 1000, prog: '25%' },
-                { id: 'build', text: 'Kompiliere Applikation & Artifacts...', time: 2500, prog: '50%' },
-                { id: 'test', text: 'Führe Unit-Tests aus (Test Plans)...', time: 4000, prog: '75%' },
-                { id: 'deploy', text: 'Veröffentliche Umgebung nach Azure...', time: 5500, prog: '100%' }
-            ];
-            
-            steps.forEach(step => {
+
+            let stepsInfo = [];
+            if (type === 'app') {
+                stepsInfo = [
+                    { id: 'app-code', text: 'Checkout App-Code aus Git...', time: 1000, prog: '25%' },
+                    { id: 'app-build', text: 'Kompiliere Applikation & Artifacts...', time: 2500, prog: '50%' },
+                    { id: 'app-test', text: 'Führe Unit-Tests aus...', time: 4000, prog: '75%' },
+                    { id: 'app-deploy', text: 'Veröffentliche Web-App auf Azure...', time: 5500, prog: '100%' }
+                ];
+            } else {
+                stepsInfo = [
+                    { id: 'iac-code', text: 'Checkout IaC-Baupläne (HCL)...', time: 1000, prog: '25%' },
+                    { id: 'iac-init', text: 'terraform init (Lade Provider)...', time: 2500, prog: '50%' },
+                    { id: 'iac-plan', text: 'terraform plan (Validiere Änderungen)...', time: 4000, prog: '75%' },
+                    { id: 'iac-apply', text: 'terraform apply (Provisioniere Cloud)...', time: 5500, prog: '100%' }
+                ];
+            }
+
+            stepsInfo.forEach(step => {
                 setTimeout(() => {
                     status.innerText = step.text;
                     status.style.color = 'var(--text-normal)';
                     progress.style.width = step.prog;
-                    
+
                     const el = document.getElementById('step-' + step.id);
                     el.classList.add('active');
-                    
+
                     // Mark previous as done
-                    const idx = steps.indexOf(step);
-                    if(idx > 0) {
-                        const prevEl = document.getElementById('step-' + steps[idx-1].id);
+                    const idx = stepsInfo.indexOf(step);
+                    if (idx > 0) {
+                        const prevEl = document.getElementById('step-' + stepsInfo[idx - 1].id);
                         prevEl.classList.remove('active');
                         prevEl.classList.add('done');
                         const icon = prevEl.querySelector('svg, i');
@@ -1745,13 +2119,12 @@
                             icon.classList.add('text-[var(--color-emerald)]');
                         }
                     }
-                    
                 }, step.time);
             });
-            
+
             // Finish
             setTimeout(() => {
-                const lastEl = document.getElementById('step-deploy');
+                const lastEl = document.getElementById('step-' + stepsInfo[3].id);
                 lastEl.classList.remove('active');
                 lastEl.classList.add('done');
                 const icon = lastEl.querySelector('svg, i');
@@ -1759,68 +2132,159 @@
                     icon.classList.remove('text-gray-400');
                     icon.classList.add('text-[var(--color-emerald)]');
                 }
-                
-                status.innerText = "✓ Erfolgreich bereitgestellt!";
+
+                status.innerText = "✓ Erfolgreich abgeschlossen!";
                 status.style.color = 'var(--color-emerald)';
-                btn.innerHTML = '<i data-lucide="rotate-ccw"></i> Neu Starten';
+                btn.innerHTML = '<i data-lucide="rotate-ccw" class="w-4 h-4"></i> Neu Starten';
                 lucide.createIcons();
-                isPipelineRunning = false;
+
+                if (type === 'app') isAppPipeRunning = false;
+                if (type === 'iac') isIacPipeRunning = false;
             }, 7000);
         }
 
-        // --- Interactive: Slide 6 (Terraform) ---
-        function runTerraform() {
-            const btn = document.getElementById('btn-terraform');
+        // --- Interactive: Slide 6 (Terraform Plan & Apply) ---
+        function switchTfTab(tabName) {
+            const codeTab = document.getElementById('tab-code');
+            const termTab = document.getElementById('tab-term');
+            const viewCode = document.getElementById('view-code');
+            const viewTerm = document.getElementById('view-term');
+
+            if (tabName === 'code') {
+                codeTab.className = "px-4 py-2 bg-[#0a0a0a] text-gray-300 border-t border-l border-r border-gray-800 rounded-t-lg text-xs font-mono transition-colors";
+                termTab.className = "px-4 py-2 bg-transparent text-gray-500 border-t border-l border-r border-transparent rounded-t-lg text-xs font-mono hover:text-gray-300 transition-colors cursor-pointer";
+                viewCode.classList.remove('hidden');
+                viewTerm.classList.add('hidden');
+            } else {
+                termTab.className = "px-4 py-2 bg-[#0a0a0a] text-gray-300 border-t border-l border-r border-gray-800 rounded-t-lg text-xs font-mono transition-colors";
+                codeTab.className = "px-4 py-2 bg-transparent text-gray-500 border-t border-l border-r border-transparent rounded-t-lg text-xs font-mono hover:text-gray-300 transition-colors cursor-pointer";
+                viewCode.classList.add('hidden');
+                viewTerm.classList.remove('hidden');
+            }
+        }
+
+        function runTerraformPlan() {
+            switchTfTab('term');
+            const viewTerm = document.getElementById('view-term');
+            const btnPlan = document.getElementById('btn-tf-plan');
+            const btnApply = document.getElementById('btn-tf-apply');
+
+            btnPlan.innerHTML = '<i data-lucide="loader" class="animate-spin w-4 h-4"></i> planning...';
+            lucide.createIcons();
+
+            viewTerm.innerHTML = "<span class='text-gray-500'>$ terraform plan</span><br><br>";
+
+            setTimeout(() => {
+                viewTerm.innerHTML += "Terraform will perform the following actions:<br><br>";
+
+                setTimeout(() => {
+                    viewTerm.innerHTML += "<span class='text-green-400'>  # azurerm_resource_group.rg will be created</span><br>";
+                    viewTerm.innerHTML += "<span class='text-green-400'>  + resource \"azurerm_resource_group\" \"rg\" {<br>      + location = \"West Europe\"<br>      + name     = \"my-app-rg\"<br>    }</span><br><br>";
+                }, 400);
+
+                setTimeout(() => {
+                    viewTerm.innerHTML += "<span class='text-green-400'>  # azurerm_app_service.web will be created</span><br>";
+                    viewTerm.innerHTML += "<span class='text-green-400'>  + resource \"azurerm_app_service\" \"web\" {<br>      + name     = \"frontend-app\"<br>      + ...<br>    }</span><br><br>";
+                }, 800);
+
+                setTimeout(() => {
+                    viewTerm.innerHTML += "<span class='text-green-400'>  # azurerm_sql_database.db will be created</span><br>";
+                    viewTerm.innerHTML += "<span class='text-green-400'>  + resource \"azurerm_sql_database\" \"db\" {<br>      + name     = \"app-database\"<br>      + ...<br>    }</span><br><br>";
+                }, 1200);
+
+                setTimeout(() => {
+                    viewTerm.innerHTML += "Plan: <span class='text-green-400 font-bold'>3 to add</span>, 0 to change, 0 to destroy.<br>";
+
+                    btnPlan.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> plan ready';
+                    btnPlan.classList.replace('text-white', 'text-[var(--color-emerald)]');
+                    lucide.createIcons();
+
+                    // Enable Apply button
+                    btnApply.classList.remove('opacity-50', 'pointer-events-none');
+
+                    // Reset plan button visually after a bit
+                    setTimeout(() => {
+                        btnPlan.innerHTML = '<i data-lucide="search" class="w-4 h-4"></i> terraform plan';
+                        btnPlan.classList.replace('text-[var(--color-emerald)]', 'text-white');
+                        lucide.createIcons();
+                    }, 2500);
+
+                    // Scroll terminal to bottom
+                    viewTerm.scrollTop = viewTerm.scrollHeight;
+                }, 1600);
+
+            }, 500);
+        }
+
+        function runTerraformApply() {
+            const btnApply = document.getElementById('btn-tf-apply');
+            const viewTerm = document.getElementById('view-term');
+
+            // Cloud Canvas Elements
             const emptyText = document.getElementById('cloud-empty-text');
             const rg = document.getElementById('infra-rg');
             const web = document.getElementById('infra-web');
             const db = document.getElementById('infra-db');
-            
-            // Reset
-            rg.classList.remove('visible');
-            web.classList.remove('visible');
-            db.classList.remove('visible');
-            
-            setTimeout(() => rg.classList.add('hidden'), 500);
-            setTimeout(() => web.classList.add('hidden'), 500);
-            setTimeout(() => db.classList.add('hidden'), 500);
-            
-            btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> Plan validieren...';
+
+            switchTfTab('term');
+            viewTerm.innerHTML += "<br><br><span class='text-gray-500'>$ terraform apply -auto-approve</span><br><br>";
+
+            // Reset visual state
+            rg.classList.remove('visible', 'hidden');
+            web.classList.remove('visible', 'hidden');
+            db.classList.remove('visible', 'hidden');
+            rg.classList.add('hidden');
+            web.classList.add('hidden');
+            db.classList.add('hidden');
+            emptyText.style.display = 'block';
+
+            btnApply.innerHTML = '<i data-lucide="loader" class="animate-spin w-4 h-4"></i> applying...';
             lucide.createIcons();
-            
+
             setTimeout(() => {
                 emptyText.style.display = 'none';
-                btn.innerHTML = '<i data-lucide="loader" class="animate-spin"></i> applying...';
-                lucide.createIcons();
-                
-                // Show RG first
+                viewTerm.innerHTML += "azurerm_resource_group.rg: Creating...<br>";
+                viewTerm.scrollTop = viewTerm.scrollHeight;
+
                 rg.classList.remove('hidden');
                 setTimeout(() => rg.classList.add('visible'), 50);
-                
-                // Then Web and DB
+
                 setTimeout(() => {
+                    viewTerm.innerHTML += "azurerm_resource_group.rg: Creation complete after 2s<br>";
+                    viewTerm.innerHTML += "azurerm_app_service.web: Creating...<br>";
+                    viewTerm.innerHTML += "azurerm_sql_database.db: Creating...<br>";
+                    viewTerm.scrollTop = viewTerm.scrollHeight;
+
                     web.classList.remove('hidden');
                     db.classList.remove('hidden');
+
                     setTimeout(() => {
                         web.classList.add('visible');
                         db.classList.add('visible');
-                        
-                        btn.innerHTML = '<i data-lucide="check"></i> State aktualisiert';
+
+                        viewTerm.innerHTML += "azurerm_app_service.web: Creation complete after 3s<br>";
+                        viewTerm.innerHTML += "azurerm_sql_database.db: Creation complete after 3s<br><br>";
+                        viewTerm.innerHTML += "<span class='text-[var(--color-emerald)] font-bold'>Apply complete! Resources: 3 added, 0 changed, 0 destroyed.</span><br>";
+                        viewTerm.scrollTop = viewTerm.scrollHeight;
+
+                        btnApply.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> applied';
+                        btnApply.classList.replace('text-white', 'text-[var(--color-emerald)]');
                         lucide.createIcons();
-                        btn.classList.replace('text-white', 'text-[var(--color-emerald)]');
-                        
+
                         setTimeout(() => {
-                            btn.innerHTML = '<i data-lucide="terminal-square"></i> terraform apply';
-                            btn.classList.replace('text-[var(--color-emerald)]', 'text-white');
+                            btnApply.innerHTML = '<i data-lucide="play" class="w-4 h-4"></i> terraform apply';
+                            btnApply.classList.replace('text-[var(--color-emerald)]', 'text-white');
+                            btnApply.classList.add('opacity-50', 'pointer-events-none'); // require plan again
                             lucide.createIcons();
                         }, 3000);
-                        
+
                     }, 50);
-                }, 1200);
-                
-            }, 1000);
+                }, 1500);
+
+            }, 800);
         }
 
     </script>
 </body>
+
 </html>
