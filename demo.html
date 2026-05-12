@@ -204,7 +204,7 @@
             height: 12px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
-            margin: 0.8rem 0;
+            margin: 0.7rem 0;
             cursor: pointer;
             transition: all 0.3s;
             position: relative;
@@ -274,17 +274,9 @@
 
         /* Floating Animation */
         @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         .floating {
@@ -292,13 +284,8 @@
         }
 
         @keyframes flowDash {
-            from {
-                stroke-dashoffset: 1500;
-            }
-
-            to {
-                stroke-dashoffset: 0;
-            }
+            from { stroke-dashoffset: 1500; }
+            to { stroke-dashoffset: 0; }
         }
 
         .animate-flow {
@@ -415,11 +402,12 @@
             <div class="nav-dot" data-index="2" data-tooltip="Git Workflow" onclick="goToSlide(2)"></div>
             <div class="nav-dot" data-index="3" data-tooltip="Was ist DevOps?" onclick="goToSlide(3)"></div>
             <div class="nav-dot" data-index="4" data-tooltip="DevOps Tools" onclick="goToSlide(4)"></div>
-            <div class="nav-dot" data-index="5" data-tooltip="DevOps Toolchain" onclick="goToSlide(5)"></div>
-            <div class="nav-dot" data-index="6" data-tooltip="Terraform & IaC" onclick="goToSlide(6)"></div>
-            <div class="nav-dot" data-index="7" data-tooltip="Big Picture" onclick="goToSlide(7)"></div>
-            <div class="nav-dot" data-index="8" data-tooltip="Skills & Ressourcen" onclick="goToSlide(8)"></div>
-            <div class="nav-dot" data-index="9" data-tooltip="Summary" onclick="goToSlide(9)"></div>
+            <div class="nav-dot" data-index="5" data-tooltip="Pipeline Architektur" onclick="goToSlide(5)"></div>
+            <div class="nav-dot" data-index="6" data-tooltip="DevOps Toolchain" onclick="goToSlide(6)"></div>
+            <div class="nav-dot" data-index="7" data-tooltip="Terraform & IaC" onclick="goToSlide(7)"></div>
+            <div class="nav-dot" data-index="8" data-tooltip="Big Picture" onclick="goToSlide(8)"></div>
+            <div class="nav-dot" data-index="9" data-tooltip="Skills & Ressourcen" onclick="goToSlide(9)"></div>
+            <div class="nav-dot" data-index="10" data-tooltip="Summary" onclick="goToSlide(10)"></div>
         </div>
         <div class="mt-4 mb-4">
             <button onclick="nextSlide()" class="p-2 rounded-full glass hover:bg-white/10 transition-colors">
@@ -461,25 +449,16 @@
                     Starten <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </button>
             </div>
-
-            <div class="absolute bottom-8 right-8 text-sm text-[var(--text-subtle)] font-mono flex items-center gap-3">
-                <img src="187x50-inverted (1).png" alt="vision&" class="h-5 opacity-80"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
-                <span
-                    style="display:none; font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 1.2rem; color: white;"
-                    class="opacity-80 tracking-wide">vision<span style="color: var(--color-vision);">&amp;</span></span>
-                <span id="current-date-display">| Datum laden...</span>
-            </div>
         </div>
 
         <!-- Slide 1: Status Quo -->
         <div class="slide" id="slide-1">
             <header class="mb-10">
                 <div class="code-badge mb-3"># Problemstellung</div>
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient">Der Status Quo - Wo es wehtut</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)]">Der Status Quo - Wo es wehtut</h2>
             </header>
 
-            <div class="grid grid-cols-2 gap-8 flex-1">
+            <div class="grid grid-cols-2 gap-8 flex-1 pb-10">
                 <!-- Left: Problems -->
                 <div class="flex flex-col justify-center gap-6">
                     <div class="glass p-6 flex items-start gap-4">
@@ -515,7 +494,7 @@
                 </div>
 
                 <!-- Right: Interactive Chaos -->
-                <div class="glass flex flex-col items-center justify-center relative overflow-hidden group">
+                <div class="glass flex flex-col items-center justify-center relative overflow-hidden group h-[85%] w-[90%] self-center justify-self-center mb-6">
                     <div class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent"></div>
                     <div class="z-10 text-center">
                         <h3 class="text-2xl text-white mb-6">Die Angst vor dem Deployment</h3>
@@ -538,7 +517,7 @@
         <div class="slide" id="slide-2">
             <header class="mb-4">
                 <div class="code-badge mb-3"># Lösung 1</div>
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient">Git: Die Zeitmaschine</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)]">Git: Die Zeitmaschine</h2>
                 <p class="text-xl mt-2">Die Parallelwelt: Versionskontrolle, Branching & Zusammenarbeit im Team.</p>
             </header>
 
@@ -634,7 +613,7 @@
         <div class="slide" id="slide-3">
             <header class="mb-6">
                 <div class="code-badge mb-3"># Konzept</div>
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient">Was ist DevOps?</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)]">Was ist DevOps?</h2>
                 <p class="text-xl mt-2">Das Einreissen der "Mauer der Verwirrung" zwischen Entwicklung und Betrieb.</p>
             </header>
 
@@ -842,7 +821,7 @@
         <!-- Slide 4: DevOps Tool-Landschaft -->
         <div class="slide" id="slide-4">
             <header class="mb-2">
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient text-center">Die DevOps Tool-Landschaft</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)] text-center">Die DevOps Tool-Landschaft</h2>
                 <p class="text-xl mt-2 text-center text-gray-300">Für jede Phase im Lebenszyklus die passenden,
                     marktführenden Werkzeuge.</p>
             </header>
@@ -1058,12 +1037,87 @@
             </div>
         </div>
 
-        <!-- Slide 5: Azure DevOps Toolchain -->
+        <!-- NEW Slide 5: Pipeline Concept -->
         <div class="slide" id="slide-5">
+            <header class="mb-6">
+                <div class="code-badge mb-3 text-[var(--color-pink)] border-[var(--color-pink)] bg-pink-500/10"># Deep Dive</div>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)]">Azure Pipelines: Die Anatomie</h2>
+                <p class="text-xl mt-2">Wie ist ein automatisiertes Fliessband eigentlich aufgebaut?</p>
+            </header>
+
+            <div class="flex flex-1 gap-8 w-full mt-4">
+                <!-- Interactive Hierachy Tree (Left) -->
+                <div class="w-1/2 flex flex-col justify-center">
+                    <p class="text-gray-400 text-sm mb-4 italic">Klicke auf die verschiedenen Ebenen:</p>
+                    
+                    <div class="glass p-6 w-full cursor-pointer transition-all pipeline-node shadow-[0_0_20px_rgba(255,255,255,0.2)] bg-white/10 hover:border-[var(--color-cyan)]" onclick="selectPipeConcept('pipeline', event)" id="node-pipeline">
+                        <div class="flex items-center gap-2 mb-2"><i data-lucide="route" class="text-[var(--color-cyan)]"></i> <h3 class="text-lg font-bold text-white">Pipeline</h3></div>
+                        
+                        <!-- Stage -->
+                        <div class="ml-6 mt-4 border-l-2 border-gray-700 pl-6">
+                            <div class="glass p-4 w-full cursor-pointer transition-all pipeline-node hover:border-[var(--color-pink)]" onclick="selectPipeConcept('stage', event)" id="node-stage">
+                                <div class="flex items-center gap-2 mb-2"><i data-lucide="layers" class="text-[var(--color-pink)]"></i> <h4 class="font-bold text-white">Stage (z.B. Build)</h4></div>
+                                
+                                <!-- Job -->
+                                <div class="ml-6 mt-4 border-l-2 border-gray-700 pl-6 flex gap-4">
+                                    <div class="glass p-4 flex-1 cursor-pointer transition-all pipeline-node hover:border-[var(--color-gold)]" onclick="selectPipeConcept('job', event)" id="node-job">
+                                        <div class="flex items-center gap-2 mb-2"><i data-lucide="briefcase" class="text-[var(--color-gold)]"></i> <h5 class="font-bold text-white">Job</h5></div>
+                                        
+                                        <!-- Tasks -->
+                                        <div class="ml-4 mt-3 space-y-2">
+                                            <div class="bg-gray-800/50 p-2 rounded border border-gray-700 cursor-pointer transition-all pipeline-node hover:border-[var(--color-emerald)] text-xs font-mono flex items-center gap-2" onclick="selectPipeConcept('task', event)" id="node-task1">
+                                                <i data-lucide="terminal" class="w-3 h-3 text-[var(--color-emerald)]"></i> Task 1: npm install
+                                            </div>
+                                            <div class="bg-gray-800/50 p-2 rounded border border-gray-700 cursor-pointer transition-all pipeline-node hover:border-[var(--color-emerald)] text-xs font-mono flex items-center gap-2" onclick="selectPipeConcept('task', event)" id="node-task2">
+                                                <i data-lucide="terminal" class="w-3 h-3 text-[var(--color-emerald)]"></i> Task 2: build
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Agent/Pool -->
+                                    <div class="glass p-4 w-1/3 cursor-pointer transition-all flex flex-col items-center justify-center pipeline-node text-center hover:border-[var(--color-purple)]" onclick="selectPipeConcept('pool', event)" id="node-pool">
+                                        <i data-lucide="server" class="w-8 h-8 text-[var(--color-purple)] mb-2"></i>
+                                        <h5 class="font-bold text-white text-sm">Agent Pool</h5>
+                                        <p class="text-[10px] text-gray-400 mt-1">Ubuntu-latest</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Details Panel (Right) -->
+                <div class="w-1/2 glass p-8 flex flex-col relative overflow-hidden transition-all duration-300" id="concept-panel">
+                    <div class="absolute -right-10 -top-10 opacity-10">
+                        <i data-lucide="route" class="w-64 h-64 text-[var(--color-cyan)] transition-colors duration-300" id="panel-icon"></i>
+                    </div>
+                    
+                    <div class="code-badge mb-4 w-max" id="panel-badge">Ebene 1: Root</div>
+                    <h3 class="text-4xl font-bold text-white mb-4" id="panel-title">Pipeline</h3>
+                    <p class="text-lg text-gray-300 leading-relaxed mb-8" id="panel-desc">
+                        Die Pipeline ist die Gesamtstruktur. Sie definiert den kompletten Automatisierungsprozess und bestimmt durch Trigger (z.B. Code-Commit oder Zeitplan), wann die Ausführung startet.
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <h4 class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-widest">YAML Snippet</h4>
+                        <div class="bg-black/60 p-4 rounded-lg font-mono text-sm border border-gray-800" id="panel-code">
+<pre><code><span class="text-pink-400">trigger:</span>
+  - main
+
+<span class="text-pink-400">pool:</span>
+  <span class="text-blue-400">vmImage:</span> <span class="text-green-300">"ubuntu-latest"</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Azure DevOps Toolchain -->
+        <div class="slide" id="slide-6">
             <header class="mb-4">
                 <div class="code-badge mb-3 text-[var(--color-pink)] border-[var(--color-pink)] bg-pink-500/10">#
                     Microsofts Ökosystem</div>
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient">Die Azure DevOps Toolchain</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)]">Die Azure DevOps Toolchain</h2>
                 <p class="text-xl mt-2">Eine integrierte Plattform für den gesamten DevOps-Kreislauf.</p>
             </header>
 
@@ -1208,12 +1262,12 @@
             </div>
         </div>
 
-        <!-- Slide 6: Terraform -->
-        <div class="slide" id="slide-6">
+        <!-- Slide 7: Terraform -->
+        <div class="slide" id="slide-7">
             <header class="mb-4">
                 <div class="code-badge mb-2 text-[var(--color-purple)] border-[var(--color-purple)] bg-purple-500/10">#
                     Lösung 3</div>
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient">IaC & Terraform: Plan & Apply</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)]">IaC & Terraform: Plan & Apply</h2>
                 <p class="text-lg mt-1">Infrastruktur als Code: Wir schreiben Baupläne und prüfen sie vor der
                     Ausführung.</p>
             </header>
@@ -1358,14 +1412,14 @@
             </div>
         </div>
 
-        <!-- Slide 7: Das grosse Ganze -->
-        <div class="slide" id="slide-7">
-            <header class="absolute top-[12%] w-full text-center z-20">
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient">Das grosse Ganze</h2>
+        <!-- Slide 8: Das grosse Ganze -->
+        <div class="slide" id="slide-8">
+            <header class="w-full text-center z-20">
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)]">Das grosse Ganze</h2>
                 <p class="text-xl mt-2 text-[var(--text-normal)]">Wie die Zahnräder ineinandergreifen</p>
             </header>
 
-            <div class="flex-1 relative flex items-center justify-center p-8 mt-16 w-full">
+            <div class="flex-1 relative flex items-center justify-center p-8 w-full">
                 <!-- Exact 900x600 grid for perfect spacing -->
                 <div
                     class="relative w-[900px] h-[600px] flex items-center justify-center scale-90 lg:scale-100 xl:scale-110 transform-origin-center">
@@ -1498,15 +1552,15 @@
             </div>
         </div>
 
-        <!-- Slide 8: NEW - Skills & Ressourcen -->
-        <div class="slide" id="slide-8">
-            <header class="mb-10">
-                <h2 class="text-4xl md:text-5xl font-bold text-gradient text-center">Skills & Ressourcen</h2>
-                <p class="text-xl mt-2 text-center text-gray-300">Wie man DevOps und IaC erfolgreich in der Praxis
+        <!-- Slide 9: NEW - Skills & Ressourcen -->
+        <div class="slide" id="slide-9">
+            <header class="my-10 flex flex-col items-center text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)] mb-4">Skills & Ressourcen</h2>
+                <p class="text-xl text-gray-300 max-w-3xl leading-relaxed">Wie man DevOps und IaC erfolgreich in der Praxis
                     anwendet.</p>
             </header>
 
-            <div class="flex-1 flex items-center justify-center w-full">
+            <div class="flex-1 flex items-center justify-center w-full pb-8">
                 <div class="grid grid-cols-2 gap-12 max-w-6xl w-full">
 
                     <!-- Left: Skills -->
@@ -1518,7 +1572,7 @@
                         </div>
 
                         <div
-                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-cyan)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+                            class="glass p-5 rounded-xl flex items-start gap-4 hover:border-[var(--color-cyan)] transition-colors">
                             <i data-lucide="git-merge" class="w-8 h-8 text-[var(--color-cyan)] mt-1 flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-white text-lg mb-1">Git & Versionskontrolle</h4>
@@ -1528,7 +1582,7 @@
                         </div>
 
                         <div
-                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-pink)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+                            class="glass p-5 rounded-xl flex items-start gap-4 hover:border-[var(--color-pink)] transition-colors">
                             <i data-lucide="infinity" class="w-8 h-8 text-[var(--color-pink)] mt-1 flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-white text-lg mb-1">CI/CD Pipelines</h4>
@@ -1538,7 +1592,7 @@
                         </div>
 
                         <div
-                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-gold)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+                            class="glass p-5 rounded-xl flex items-start gap-4 hover:border-[var(--color-gold)] transition-colors">
                             <i data-lucide="terminal-square"
                                 class="w-8 h-8 text-[var(--color-gold)] mt-1 flex-shrink-0"></i>
                             <div>
@@ -1549,7 +1603,7 @@
                         </div>
 
                         <div
-                            class="glass p-5 rounded-xl border-l-2 border-[var(--color-emerald)] flex items-start gap-4 hover:bg-white/5 transition-colors">
+                            class="glass p-5 rounded-xl flex items-start gap-4 hover:border-[var(--color-emerald)] transition-colors">
                             <i data-lucide="blocks" class="w-8 h-8 text-[var(--color-emerald)] mt-1 flex-shrink-0"></i>
                             <div>
                                 <h4 class="font-bold text-white text-lg mb-1">Cloud & IaC (Terraform)</h4>
@@ -1568,34 +1622,34 @@
                         </div>
 
                         <a href="https://learn.microsoft.com/de-de/azure/devops/" target="_blank"
-                            class="glass p-5 rounded-xl hover:border-blue-400 transition-all flex items-center justify-between group cursor-pointer">
+                            class="glass p-5 rounded-xl hover:border-[var(--color-cyan)] transition-all flex items-center justify-between group cursor-pointer">
                             <div class="flex items-center gap-4">
                                 <i class="devicon-azure-plain colored text-4xl"></i>
                                 <div>
                                     <h4
-                                        class="font-bold text-white text-lg group-hover:text-blue-400 transition-colors">
+                                        class="font-bold text-white text-lg group-hover:text-[var(--color-cyan)] transition-colors">
                                         Microsoft Learn</h4>
                                     <p class="text-sm text-gray-400">Kostenlose Azure DevOps & Cloud Lernpfade und
                                         interaktive Sandbox-Umgebungen.</p>
                                 </div>
                             </div>
-                            <i data-lucide="external-link" class="w-5 h-5 text-gray-500 group-hover:text-blue-400"></i>
+                            <i data-lucide="external-link" class="w-5 h-5 text-gray-500 group-hover:text-[var(--color-cyan)]"></i>
                         </a>
 
                         <a href="https://developer.hashicorp.com/terraform/tutorials" target="_blank"
-                            class="glass p-5 rounded-xl hover:border-purple-400 transition-all flex items-center justify-between group cursor-pointer">
+                            class="glass p-5 rounded-xl hover:border-[var(--color-purple)] transition-all flex items-center justify-between group cursor-pointer">
                             <div class="flex items-center gap-4">
                                 <i class="devicon-terraform-plain colored text-4xl"></i>
                                 <div>
                                     <h4
-                                        class="font-bold text-white text-lg group-hover:text-purple-400 transition-colors">
+                                        class="font-bold text-white text-lg group-hover:text-[var(--color-purple)] transition-colors">
                                         HashiCorp Tutorials</h4>
                                     <p class="text-sm text-gray-400">Offizielle Hands-on Labs für Terraform (HCL Syntax,
                                         Modules, State-Management).</p>
                                 </div>
                             </div>
                             <i data-lucide="external-link"
-                                class="w-5 h-5 text-gray-500 group-hover:text-purple-400"></i>
+                                class="w-5 h-5 text-gray-500 group-hover:text-[var(--color-purple)]"></i>
                         </a>
 
                         <a href="https://github.com" target="_blank"
@@ -1625,10 +1679,10 @@
             </div>
         </div>
 
-        <!-- Slide 9: Outro -->
-        <div class="slide" id="slide-9">
+        <!-- Slide 10: Outro -->
+        <div class="slide" id="slide-10">
             <header class="mb-10 text-center mt-6">
-                <h2 class="text-5xl font-bold text-gradient mb-4">Key Take-Aways</h2>
+                <h2 class="text-5xl font-bold text-[var(--color-vision)] drop-shadow-[0_0_15px_rgba(8,204,171,0.2)] mb-4">Key Take-Aways</h2>
                 <p class="text-xl">Mehr Zeit für die eigentliche Arbeit – das Lösen von Business-Problemen!</p>
             </header>
 
@@ -1643,8 +1697,11 @@
                         </div>
                         <h3 class="text-xl font-bold text-white">Git & Versionierung</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">Keine Angst mehr vor Fehlern durch isoliertes Arbeiten in Branches
-                        und lückenlose Versionskontrolle.</p>
+                    <ul class="text-sm text-left mt-4 space-y-2 text-gray-300">
+                        <li>• Arbeiten in isolierten Branches (Feature, Bugfix)</li>
+                        <li>• Lückenlose und sichere Versionskontrolle</li>
+                        <li>• Keine Angst mehr vor Fehlern oder Datenverlust</li>
+                    </ul>
                 </div>
 
                 <!-- DevOps & Pipelines -->
@@ -1656,8 +1713,11 @@
                         </div>
                         <h3 class="text-xl font-bold text-white">DevOps & Pipelines</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">Sicherheit & Tempo. Wir automatisieren fehleranfällige Handarbeit
-                        und verbinden Development nahtlos mit Operations.</p>
+                    <ul class="text-sm text-left mt-4 space-y-2 text-gray-300">
+                        <li>• Automatisierung von manuellen, fehleranfälligen Prozessen</li>
+                        <li>• Verbindet Development & Operations nahtlos</li>
+                        <li>• Kürzere Entwicklungszyklen (Sicherheit & Tempo)</li>
+                    </ul>
                 </div>
 
                 <!-- IaC -->
@@ -1669,8 +1729,11 @@
                         </div>
                         <h3 class="text-xl font-bold text-white">IaC (Terraform)</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">Infrastruktur wird programmierbar, idempotent und reproduzierbar.
-                        Nachvollziehbare Baupläne statt Klicks im Portal.</p>
+                    <ul class="text-sm text-left mt-4 space-y-2 text-gray-300">
+                        <li>• Infrastruktur wird zum reproduzierbaren Code</li>
+                        <li>• Idempotent und automatisiert sicher gegen "Drift"</li>
+                        <li>• Nachvollziehbare Baupläne statt Klicks im Portal</li>
+                    </ul>
                 </div>
 
                 <!-- NEW: Skillset -->
@@ -1682,34 +1745,24 @@
                         </div>
                         <h3 class="text-xl font-bold text-white">Das neue Skillset</h3>
                     </div>
-                    <p class="text-gray-400 text-sm">DevOps erfordert Umdenken: Skripting, Cloud-Wissen und
-                        Git-Workflows verschmelzen. Kontinuierliches "Hands-on" Lernen ist der Schlüssel.</p>
+                    <ul class="text-sm text-left mt-4 space-y-2 text-gray-300">
+                        <li>• Skripting, Cloud-Wissen & Git verschmelzen</li>
+                        <li>• DevOps erfordert ein kulturelles Umdenken im Team</li>
+                        <li>• Kontinuierliches "Hands-on" Lernen ist der Schlüssel</li>
+                    </ul>
                 </div>
 
             </div>
+        </div>
 
-            <div class="text-center mt-auto pb-8">
-                <div class="glass inline-flex items-center gap-6 px-10 py-6 rounded-2xl"
-                    style="border-color: rgba(8, 204, 171, 0.4); background: rgba(8, 204, 171, 0.05);">
-                    <div class="text-left">
-                        <img src="187x50-inverted (1).png" alt="vision&" class="h-8 mb-2"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <div
-                            style="display:none; font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 2rem; color: white; margin-bottom: 0.5rem; letter-spacing: 1px;">
-                            vision<span style="color: var(--color-vision);">&amp;</span></div>
-                        <div class="text-xl font-light text-white">Your business, simply brilliant.</div>
-                    </div>
-                    <div class="h-10 w-px bg-gray-700"></div>
-                    <div class="flex gap-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
-                                data-lucide="globe"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
-                                data-lucide="mail"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
-                                data-lucide="phone"></i></a>
-                    </div>
-                </div>
-            </div>
+        <!-- Global Footer Logo -->
+        <div class="absolute bottom-8 right-8 text-sm text-[var(--text-subtle)] font-mono flex items-center gap-3 pointer-events-none z-50">
+            <img src="187x50-inverted (1).png" alt="vision&" class="h-5 opacity-80"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+            <span
+                style="display:none; font-family: 'Segoe UI', sans-serif; font-weight: bold; font-size: 1.2rem; color: white;"
+                class="opacity-80 tracking-wide">vision<span style="color: var(--color-vision);">&amp;</span></span>
+            <span id="current-date-display">| Datum laden...</span>
         </div>
 
     </main>
@@ -1730,7 +1783,7 @@
 
         // --- Navigation Logic ---
         let currentSlide = 0;
-        const totalSlides = 10; // Updated for the new Skills slide
+        const totalSlides = 11;
 
         function updateNav() {
             document.querySelectorAll('.nav-dot').forEach((dot, index) => {
@@ -2052,7 +2105,87 @@
             }, 500);
         }
 
-        // --- Interactive: Slide 5 (Dual Pipelines) ---
+        // --- Interactive: Slide 5 (Pipeline Architecture) ---
+        const pipelineConcepts = {
+            pipeline: {
+                title: 'Pipeline',
+                badge: 'Ebene 1: Root',
+                icon: 'route',
+                color: 'var(--color-cyan)',
+                desc: 'Die Pipeline ist die Gesamtstruktur. Sie definiert den kompletten Automatisierungsprozess und bestimmt durch Trigger (z.B. Code-Commit oder Zeitplan), wann die Ausführung startet.',
+                code: '<span class="text-pink-400">trigger:</span>\n  - main\n\n<span class="text-pink-400">pool:</span>\n  <span class="text-blue-400">vmImage:</span> <span class="text-green-300">"ubuntu-latest"</span>'
+            },
+            stage: {
+                title: 'Stage',
+                badge: 'Ebene 2: Phasen',
+                icon: 'layers',
+                color: 'var(--color-pink)',
+                desc: 'Eine Stage bündelt Jobs in logische Phasen (z.B. Build, Test, Deploy). Stages laufen nacheinander ab und können Abhängigkeiten haben. So wird erst in Produktion deployt, wenn alle Tests grün sind.',
+                code: '<span class="text-pink-400">stages:</span>\n- <span class="text-pink-400">stage:</span> <span class="text-blue-400">Build</span>\n  <span class="text-pink-400">displayName:</span> <span class="text-green-300">"Build WebApp"</span>\n- <span class="text-pink-400">stage:</span> <span class="text-blue-400">Deploy</span>\n  <span class="text-pink-400">dependsOn:</span> <span class="text-blue-400">Build</span>'
+            },
+            job: {
+                title: 'Job',
+                badge: 'Ebene 3: Arbeitsblöcke',
+                icon: 'briefcase',
+                color: 'var(--color-gold)',
+                desc: 'Ein Job ist eine Sammlung von Tasks, die sequenziell auf demselben Agenten ausgeführt werden. Mehrere Jobs innerhalb einer Stage können parallel laufen, um Zeit zu sparen.',
+                code: '<span class="text-pink-400">jobs:</span>\n- <span class="text-pink-400">job:</span> <span class="text-blue-400">Compile</span>\n  <span class="text-pink-400">displayName:</span> <span class="text-green-300">"Compile Source Code"</span>\n  <span class="text-pink-400">steps:</span>\n    - ...'
+            },
+            pool: {
+                title: 'Agent & Pool',
+                badge: 'Infrastruktur',
+                icon: 'server',
+                color: 'var(--color-purple)',
+                desc: 'Die Rechenleistung. Ein Agent ist eine virtuelle Maschine oder ein Container, der den Job ausführt. Agenten werden in Pools organisiert (z.B. Microsoft-hosted oder selbst gehostet).',
+                code: '<span class="text-pink-400">pool:</span>\n  <span class="text-blue-400">vmImage:</span> <span class="text-green-300">"ubuntu-latest"</span>\n\n<span class="text-gray-500 italic"># Oder self-hosted:</span>\n<span class="text-pink-400">pool:</span>\n  <span class="text-blue-400">name:</span> <span class="text-green-300">"My-Local-Datacenter"</span>'
+            },
+            task: {
+                title: 'Task / Step',
+                badge: 'Ebene 4: Aktionen',
+                icon: 'terminal',
+                color: 'var(--color-emerald)',
+                desc: 'Die kleinste Arbeitseinheit. Ein Step kann ein vorkonfigurierter Task (wie Docker Build, Terraform Apply) oder ein einfaches Skript (Bash, PowerShell) sein, das den eigentlichen Code ausführt.',
+                code: '<span class="text-pink-400">steps:</span>\n- <span class="text-pink-400">script:</span> <span class="text-blue-400">npm install</span>\n  <span class="text-pink-400">displayName:</span> <span class="text-green-300">"Install Dependencies"</span>\n- <span class="text-pink-400">task:</span> <span class="text-blue-400">TerraformCLI@0</span>\n  <span class="text-pink-400">inputs:</span>\n    <span class="text-blue-400">command:</span> <span class="text-green-300">"apply"</span>'
+            }
+        };
+
+        function selectPipeConcept(id, event) {
+            if(event) event.stopPropagation();
+
+            // Update UI selections
+            document.querySelectorAll('.pipeline-node').forEach(n => {
+                n.classList.remove('shadow-[0_0_20px_rgba(255,255,255,0.2)]', 'bg-white/10');
+            });
+            
+            const targetIds = id === 'task' ? ['node-task1', 'node-task2'] : ['node-' + id];
+            targetIds.forEach(tId => {
+                const el = document.getElementById(tId);
+                if(el) el.classList.add('shadow-[0_0_20px_rgba(255,255,255,0.2)]', 'bg-white/10');
+            });
+
+            const data = pipelineConcepts[id];
+            
+            // Update panel text
+            const panel = document.getElementById('concept-panel');
+            panel.style.opacity = 0;
+            
+            setTimeout(() => {
+                document.getElementById('panel-title').innerText = data.title;
+                document.getElementById('panel-badge').innerText = data.badge;
+                document.getElementById('panel-desc').innerText = data.desc;
+                document.getElementById('panel-code').innerHTML = data.code;
+                
+                // Update icon and color
+                const iconEl = document.getElementById('panel-icon');
+                iconEl.setAttribute('data-lucide', data.icon);
+                iconEl.style.color = data.color;
+                lucide.createIcons();
+                
+                panel.style.opacity = 1;
+            }, 200);
+        }
+
+        // --- Interactive: Slide 6 (Dual Pipelines) ---
         let isAppPipeRunning = false;
         let isIacPipeRunning = false;
 
@@ -2143,7 +2276,7 @@
             }, 7000);
         }
 
-        // --- Interactive: Slide 6 (Terraform Plan & Apply) ---
+        // --- Interactive: Slide 7 (Terraform Plan & Apply) ---
         function switchTfTab(tabName) {
             const codeTab = document.getElementById('tab-code');
             const termTab = document.getElementById('tab-term');
