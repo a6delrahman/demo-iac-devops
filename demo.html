@@ -582,6 +582,15 @@
                         <p class="text-xs text-gray-400">Zusammenführung: Fertige Arbeit aus einem Branch sicher in
                             einen anderen (z.B. Main) integrieren.</p>
                     </div>
+
+                    <div class="glass p-4 border-l-4" style="border-left-color: var(--color-yellow)">
+                        <div class="flex items-center gap-3 mb-1">
+                            <i data-lucide="plus" class="text-[var(--color-yellow)] w-5 h-5"></i>
+                            <h4 class="text-md font-bold text-white">More Commands</h4>
+                        </div>
+                        <p class="text-xs text-gray-400"><a href="https://git-scm.com/cheat-sheet" target="_blank"
+                                class="text-blue-400 underline">Git Cheat Sheet</a></p>
+                    </div>
                 </div>
 
                 <!-- Right: Interactive Step-by-Step Visualization -->
@@ -611,9 +620,13 @@
                             Branch<br><span class="text-xs text-gray-400 font-normal">(Stabile Version)</span></div>
                         <div class="git-label text-[var(--git-dev)]" style="left: 2%; top: 40%;" data-show-at="1">Dev
                             Branch<br><span class="text-xs text-gray-400 font-normal">(Werkstatt)</span></div>
-                        <div class="git-label text-[var(--git-feat)]" style="left: 2%; top: 65%;" data-show-at="3">
+                        <div class="git-label text-orange-400" style="left: 2%; top: 65%;" data-show-at="2"
+                            data-hide-at="4">
+                            Hotfix Branch<br><span class="text-xs text-gray-400 font-normal">(Kritischer Fix)</span>
+                        </div>
+                        <div class="git-label text-[var(--git-feat)]" style="left: 2%; top: 65%;" data-show-at="4">
                             Feature Branch<br><span class="text-xs text-gray-400 font-normal">(Funktion A)</span></div>
-                        <div class="git-label text-[var(--git-bug)]" style="left: 2%; top: 90%;" data-show-at="4">Bugfix
+                        <div class="git-label text-[var(--git-bug)]" style="left: 2%; top: 90%;" data-show-at="6">Bugfix
                             Branch<br><span class="text-xs text-gray-400 font-normal">(Fehlerbehebung B)</span></div>
                     </div>
 
@@ -1926,7 +1939,6 @@
             }
         });
 
-        // --- Interactive: Slide 2 (Git Graph Scenario) ---
         const gitSim = {
             currentStep: 0,
             svg: document.getElementById('git-svg'),
@@ -1935,62 +1947,83 @@
             counterEl: document.getElementById('git-step-counter'),
             btnNext: document.getElementById('btn-git-next'),
 
-            // X points on a % scale (0 to 7 mapping nicely across the box)
             xScale: (col) => 5 + (col * 12.5),
-            yScale: (row) => 15 + (row * 25), // 0:15%, 1:40%, 2:65%, 3:90%
+            yScale: (row) => 15 + (row * 25),
 
             nodes: {
                 m1: { id: 'm1', col: 0, row: 0, color: 'bg-pink-500', step: 0 },
                 d1: { id: 'd1', col: 1, row: 1, color: 'bg-green-400', step: 1 },
-                m2: { id: 'm2', col: 2, row: 0, color: 'bg-pink-500', step: 2 },
-                fa1: { id: 'fa1', col: 2, row: 2, color: 'bg-blue-400', step: 3 },
-                fa2: { id: 'fa2', col: 3, row: 2, color: 'bg-blue-400', step: 4 },
-                bb1: { id: 'bb1', col: 3, row: 3, color: 'bg-yellow-400', step: 5 },
-                d2: { id: 'd2', col: 4, row: 1, color: 'bg-green-400', step: 6 },
-                bb2: { id: 'bb2', col: 5, row: 3, color: 'bg-yellow-400', step: 7 },
-                d3: { id: 'd3', col: 6, row: 1, color: 'bg-green-400', step: 8 },
-                m3: { id: 'm3', col: 7, row: 0, color: 'bg-pink-500', step: 9 },
+                hf1: { id: 'hf1', col: 2, row: 2, color: 'bg-orange-400', step: 2 }, // NEU: Hotfix Branch
+                m2: { id: 'm2', col: 3, row: 0, color: 'bg-pink-500', step: 3 }, // Hotfix → Main
+                d1b: { id: 'd1b', col: 3, row: 1, color: 'bg-green-400', step: 3 }, // NEU: Hotfix → Dev
+                fa1: { id: 'fa1', col: 4, row: 2, color: 'bg-blue-400', step: 4 },
+                fa2: { id: 'fa2', col: 5, row: 2, color: 'bg-blue-400', step: 5 },
+                bb1: { id: 'bb1', col: 4, row: 3, color: 'bg-yellow-400', step: 6 },
+                d2: { id: 'd2', col: 6, row: 1, color: 'bg-green-400', step: 7 },
+                bb2: { id: 'bb2', col: 5, row: 3, color: 'bg-yellow-400', step: 8 },
+                d3: { id: 'd3', col: 7, row: 1, color: 'bg-green-400', step: 9 },
+                m3: { id: 'm3', col: 7, row: 0, color: 'bg-pink-500', step: 10 },
             },
 
             lines: [
-                // Background tracking lines (shown early)
+                // Background tracking lines
                 { id: 'trk-m', from: 'm1', to: 'm3', type: 'track', row: 0, step: 0 },
                 { id: 'trk-d', from: 'd1', to: 'd3', type: 'track', row: 1, step: 1 },
 
-                // Actual node connections
+                // Step 1: Dev branches from Main
                 { id: 'l1', from: 'm1', to: 'd1', color: 'var(--git-dev)', step: 1, curve: true },
-                { id: 'l2', from: 'm1', to: 'm2', color: 'var(--git-main)', step: 2 },
-                { id: 'l3', from: 'd1', to: 'fa1', color: 'var(--git-feat)', step: 3, curve: true },
-                { id: 'l4', from: 'fa1', to: 'fa2', color: 'var(--git-feat)', step: 4 },
-                { id: 'l5', from: 'd1', to: 'bb1', color: 'var(--git-bug)', step: 5, curve: true },
-                { id: 'l6', from: 'd1', to: 'd2', color: 'var(--git-dev)', step: 6 },
-                { id: 'l7', from: 'fa2', to: 'd2', color: 'var(--git-dev)', step: 6, curve: true },
-                { id: 'l8', from: 'bb1', to: 'bb2', color: 'var(--git-bug)', step: 7 },
-                { id: 'l9', from: 'd2', to: 'd3', color: 'var(--git-dev)', step: 8 },
-                { id: 'l10', from: 'bb2', to: 'd3', color: 'var(--git-dev)', step: 8, curve: true },
-                { id: 'l11', from: 'm2', to: 'm3', color: 'var(--git-main)', step: 9 },
-                { id: 'l12', from: 'd3', to: 'm3', color: 'var(--git-main)', step: 9, curve: true },
+
+                // Step 2: Hotfix branches from Main
+                { id: 'l2', from: 'm1', to: 'hf1', color: '#f97316', step: 2, curve: true },
+
+                // Step 3: Hotfix merges into BOTH Main and Dev
+                { id: 'l3a', from: 'hf1', to: 'm2', color: '#f97316', step: 3, curve: true },
+                { id: 'l3b', from: 'hf1', to: 'd1b', color: '#f97316', step: 3, curve: true },
+                { id: 'l3c', from: 'd1', to: 'd1b', color: 'var(--git-dev)', step: 3 },
+
+                // Step 4: Feature branches from Dev
+                { id: 'l4', from: 'd1b', to: 'fa1', color: 'var(--git-feat)', step: 4, curve: true },
+
+                // Step 5: Feature commit
+                { id: 'l5', from: 'fa1', to: 'fa2', color: 'var(--git-feat)', step: 5 },
+
+                // Step 6: Bugfix branches from Dev
+                { id: 'l6', from: 'd1b', to: 'bb1', color: 'var(--git-bug)', step: 6, curve: true },
+
+                // Step 7: Feature merges to Dev
+                { id: 'l7a', from: 'd1b', to: 'd2', color: 'var(--git-dev)', step: 7 },
+                { id: 'l7b', from: 'fa2', to: 'd2', color: 'var(--git-feat)', step: 7, curve: true },
+
+                // Step 8: Bugfix commit
+                { id: 'l8', from: 'bb1', to: 'bb2', color: 'var(--git-bug)', step: 8 },
+
+                // Step 9: Bugfix merges to Dev
+                { id: 'l9a', from: 'd2', to: 'd3', color: 'var(--git-dev)', step: 9 },
+                { id: 'l9b', from: 'bb2', to: 'd3', color: 'var(--git-bug)', step: 9, curve: true },
+
+                // Step 10: Dev merges to Main (Release)
+                { id: 'l10a', from: 'm2', to: 'm3', color: 'var(--git-main)', step: 10 },
+                { id: 'l10b', from: 'd3', to: 'm3', color: 'var(--git-main)', step: 10, curve: true },
             ],
 
             texts: [
                 "<b>Schritt 0:</b> Initialer Startpunkt. Der Main-Branch enthält den stabilen Produktions-Code.",
                 "<b>Schritt 1: Verzweigung (Branch)</b><br>Eine Kopie (Dev-Branch) wird für Entwickler als sicherer Arbeitsbereich erstellt.",
-                "<b>Schritt 2: Paralleles Arbeiten</b><br>Währenddessen kann der Main-Branch unabhängig weiterentwickelt werden (z.B. Hotfix).",
-                "<b>Schritt 3: Feature Branch</b><br>Parallelwelt: Für die neue Funktion A wird ein isolierter Feature-Branch erstellt.",
-                "<b>Schritt 4: Commit (Speicherpunkt)</b><br>Die Fortschritte an Funktion A werden lokal gesichert.",
-                "<b>Schritt 5: Bugfix Branch</b><br>Ein Fehler fällt auf! Für die Behebung B wird parallel ein weiterer Branch (ab dem initialen Dev-Stand) erstellt.",
-                "<b>Schritt 6: Zusammenführung (Merge)</b><br>Funktion A ist fertig und wird erfolgreich in den Dev-Branch integriert.",
-                "<b>Schritt 7: Commit</b><br>Auch die Fehlerbehebung B wird erfolgreich abgeschlossen und gespeichert.",
-                "<b>Schritt 8: Zusammenführung (Merge)</b><br>Der Bugfix wird ebenfalls in den Dev-Stand übernommen. Dev enthält nun A & B.",
-                "<b>Schritt 9: Finaler Merge</b><br>Der komplett geprüfte Dev-Stand wird in die Produktion (Main-Branch) überführt!"
+                "<b>Schritt 2: Hotfix Branch</b><br>Kritischer Produktionsfehler! Direkt vom Main-Branch wird ein isolierter Hotfix-Branch erstellt — niemals direkt auf Main pushen.",
+                "<b>Schritt 3: Hotfix Merge</b><br>Der Fix ist geprüft und wird in <u>beide</u> Branches gemerged: Main (Produktion) und Dev (Werkstatt). Dev bleibt dadurch aktuell.",
+                "<b>Schritt 4: Feature Branch</b><br>Für die neue Funktion A wird ein isolierter Feature-Branch vom aktuellen Dev-Stand erstellt.",
+                "<b>Schritt 5: Commit (Speicherpunkt)</b><br>Die Fortschritte an Funktion A werden lokal gesichert.",
+                "<b>Schritt 6: Bugfix Branch</b><br>Ein weiterer Fehler fällt auf! Für die Behebung B wird parallel ein neuer Branch erstellt.",
+                "<b>Schritt 7: Zusammenführung (Merge)</b><br>Funktion A ist fertig und wird erfolgreich in den Dev-Branch integriert.",
+                "<b>Schritt 8: Commit</b><br>Auch die Fehlerbehebung B wird erfolgreich abgeschlossen und gespeichert.",
+                "<b>Schritt 9: Zusammenführung (Merge)</b><br>Der Bugfix wird ebenfalls in den Dev-Stand übernommen. Dev enthält nun A & B.",
+                "<b>Schritt 10: Finaler Merge</b><br>Der komplett geprüfte Dev-Stand wird in die Produktion (Main-Branch) überführt!"
             ],
 
             init() {
-                // Clear existing
                 this.svg.innerHTML = '';
                 document.querySelectorAll('.git-node').forEach(e => e.remove());
 
-                // Draw Nodes
                 Object.values(this.nodes).forEach(n => {
                     const el = document.createElement('div');
                     el.className = `git-node ${n.color}`;
@@ -2001,12 +2034,10 @@
                     this.container.appendChild(el);
                 });
 
-                // Prepare SVG paths
                 this.lines.forEach(l => {
                     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                     path.id = `git-line-${l.id}`;
                     path.dataset.step = l.step;
-
                     if (l.type === 'track') {
                         path.setAttribute('class', 'git-track');
                     } else {
@@ -2021,12 +2052,11 @@
 
             drawVisiblePaths() {
                 const rect = this.container.getBoundingClientRect();
-                if (rect.width === 0) return; // Not visible yet
+                if (rect.width === 0) return;
 
                 this.lines.forEach(l => {
                     const fromN = this.nodes[l.from];
                     const toN = this.nodes[l.to];
-
                     const x1 = (this.xScale(fromN.col) / 100) * rect.width;
                     const y1 = (this.yScale(fromN.row) / 100) * rect.height;
                     const x2 = (this.xScale(toN.col) / 100) * rect.width;
@@ -2037,36 +2067,30 @@
 
                     let d = '';
                     if (l.type === 'track') {
-                        // Straight line for tracks
                         d = `M ${x1} ${y1} L ${x2} ${y2}`;
                     } else if (l.curve && Math.abs(fromN.row - toN.row) > 0) {
-                        // S-Curve for branching/merging
                         const cx = (x1 + x2) / 2;
                         d = `M ${x1} ${y1} C ${cx} ${y1}, ${cx} ${y2}, ${x2} ${y2}`;
                     } else {
-                        // Straight colored line
                         d = `M ${x1} ${y1} L ${x2} ${y2}`;
                     }
 
                     path.setAttribute('d', d);
 
-                    // Set stroke length for animation if not a track
                     if (l.type !== 'track') {
                         const len = path.getTotalLength();
                         path.style.strokeDasharray = len;
-                        // If we are at or past this step, set offset to 0, else to len
                         path.style.strokeDashoffset = (this.currentStep >= l.step) ? '0' : len;
                     }
                 });
             },
 
             updateUI() {
-                // Texts
                 this.textEl.innerHTML = this.texts[this.currentStep];
                 this.counterEl.innerText = this.currentStep;
 
-                // Button State
-                if (this.currentStep >= 9) {
+                // ← Grenze auf 10 aktualisiert
+                if (this.currentStep >= 10) {
                     this.btnNext.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> Abgeschlossen';
                     this.btnNext.classList.add('opacity-50', 'pointer-events-none');
                 } else {
@@ -2075,36 +2099,28 @@
                 }
                 lucide.createIcons();
 
-                // Visibility toggles
                 document.querySelectorAll('.git-node').forEach(el => {
                     const step = parseInt(el.dataset.step);
-                    if (step <= this.currentStep) el.classList.add('visible');
-                    else el.classList.remove('visible');
+                    el.classList.toggle('visible', step <= this.currentStep);
                 });
 
-                document.querySelectorAll('.git-path').forEach(el => {
+                document.querySelectorAll('.git-path, .git-track').forEach(el => {
                     const step = parseInt(el.dataset.step);
-                    if (step <= this.currentStep) el.classList.add('visible');
-                    else el.classList.remove('visible');
+                    el.classList.toggle('visible', step <= this.currentStep);
                 });
 
-                document.querySelectorAll('.git-track').forEach(el => {
-                    const step = parseInt(el.dataset.step);
-                    if (step <= this.currentStep) el.classList.add('visible');
-                    else el.classList.remove('visible');
-                });
-
+                // data-hide-at Unterstützung für Hotfix-Label
                 document.querySelectorAll('.git-label').forEach(el => {
-                    const step = parseInt(el.dataset.showAt);
-                    if (this.currentStep >= step) el.classList.add('visible');
-                    else el.classList.remove('visible');
+                    const showAt = parseInt(el.dataset.showAt);
+                    const hideAt = el.dataset.hideAt ? parseInt(el.dataset.hideAt) : Infinity;
+                    el.classList.toggle('visible', this.currentStep >= showAt && this.currentStep < hideAt);
                 });
 
                 this.drawVisiblePaths();
             },
 
             next() {
-                if (this.currentStep < 9) {
+                if (this.currentStep < 10) { // ← 9 → 10
                     this.currentStep++;
                     this.updateUI();
                 }
@@ -2116,10 +2132,8 @@
             }
         };
 
-        // Initialize Git Sim when DOM is ready
         setTimeout(() => gitSim.init(), 100);
         window.addEventListener('resize', () => { if (currentSlide === 2) gitSim.drawVisiblePaths(); });
-
 
         // --- Interactive: Slide 3 (What is DevOps?) ---
         function uniteDevOps() {
